@@ -27,17 +27,19 @@ dir(os)
 #     print(y, ' is not a leap year')
     
 import matplotlib.pyplot as plt
-# x=[1,2,3,4,5,6,7,8,9,10,11,12]
-# x1=[1,2,3,4,5,6,7,8,9,10,11,12]
-# y=[6,8,9,10,5,7,9,7,11,10,6,5]
-# y1=[7,9,10,11,6,8,10,8,12,11,7,6]
-# plt.xlabel('Month')
-# plt.ylabel('Bonus')
-# plt.title('Bonus of whole year\nbonus of Lufy')
-# plt.plot(x,y,label='Sauron')
-# plt.plot(x1,y1,label='Lufy')
-# plt.legend()
-# plt.show()
+Month=range(1,13)
+
+y=[6,8,9,10,5,7,9,7,11,10,6,5]
+y1=[7,9,10,11,6,8,10,8,12,11,7,6]
+plt.xlabel('Month')
+plt.ylabel('Bonus')
+plt.title('Bonus of whole year\nbonus of Lufy')
+plt.plot(Month,y)
+plt.plot(Month,y1)
+plt.scatter(Month,y,label='Sauron')
+plt.scatter(Month,y1,label='Lufy')
+plt.legend()
+plt.show()
 
 # City_C_Age=[2,3,1,7,4,5,3,1,7,6,9,8,13,16,12,17,15,14,18,20,23,28,25,23,27,25,29,26,24,25,30,34,37,36,38,32,35,37,36,41,42,47,47,48,43,46,44,53,54,58,52,51,55,56,69,60,63,67,64,72,74,78,75,89,85,83,90,93]
 # bins=range(0,100,10)
@@ -78,28 +80,20 @@ import matplotlib.pyplot as plt
 # plt.legend()
 # plt.show()
 
-Nation=['China','USA','Japan','India']
-GDP=[13.1,20.7,4.9,2.7]
-cmcolor=['azure','lavender','pink','red']
-plt.title('GDP of main countries in 2018')
-plt.pie(GDP,
-         labels=Nation,
-         colors=cmcolor,
-         startangle=60,
-         shadow=True,
-         autopct='%1.2f%%',
-         explode=(0.1,0,0,0)
-        )
-
-plt.show()
-
-
-
-
-
-
-
-
+# Nation=['China','USA','Japan','India']
+# GDP=[13.1,20.7,4.9,2.7]
+# cmcolor=['azure','lavender','pink','red']
+# plt.title('GDP of main countries in 2018')
+# plt.pie(GDP,
+#          labels=Nation,
+#          colors=cmcolor,
+#          startangle=60,
+#          shadow=True,
+#          autopct='%1.2f%%',
+#          explode=(0.1,0,0,0)
+#         )
+#
+# plt.show()
 
 
 
