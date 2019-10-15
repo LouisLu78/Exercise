@@ -2,20 +2,21 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# x,y=np.loadtxt('C:/Users/Basanwei/eclipse-workspace/pydata/test.TXT',
+# x,y=np.loadtxt('GL100108a.TXT',
 #                delimiter=',',
 #                unpack=True)
-# plt.plot(x,y,label='ZnO83')
-# plt.xlabel('Wavenumber')
-# plt.ylabel('Intensity')
-# plt.title('Raman spectrum of Zinc Oxide of Sample ZnO83')
+# plt.plot(x,y,label='ZnCoO')
+# plt.xlabel('Wavelength(nm)')
+# plt.ylabel('Intensity(a.u.)')
+# plt.title('Fluorescence of ZnCoO')
+#
 # plt.legend()
 # plt.show()
 
 import pandas as pd
 data1=pd.read_csv('GL100108a.csv')
 print(data1)
-'''This is the fluorescence result of my sample which I synthesized in MPIP Lab, Germany. 
+'''This is the fluorescence result of my sample which I synthesized in MPI-Polymer Lab, Germany.
 The following is the sample&measurement information:
 GL100108.SPC	Dateiname	Filename
 Exitation (1)	Art	Type
@@ -40,15 +41,40 @@ X-Wert	Y-Wert	Y-Norm
 
 '''
 
-number=data1.a.iloc[100]
-print(number)
-x=data1.a
-y=data1.b
+number0=data1.a.iloc[100:110]
+print(number0)
+print(sum(number0))
+# x=data1.a
+# y=data1.b
 plt.xlabel('Wavelength(nm)')
 plt.ylabel('Intensity(a.u.)')
-plt.title('Fluorescence of ZnCoO')
-plt.plot(x,y)
+plt.title('Fluorescence of Zinc Cobalt Oxide')
+# plt.plot(x,y,label='ZnCoO169')
+# plt.legend()
+# plt.show()
+number=data1.iloc[3]
+print(number)
+number1=data1.iat[4,2]
+print(number1)
 
+# x=np.linspace(-10.0,9.0,num=50)
+#
+# y=x
+# y1=x**2+2*x-1
+# y2=x**3
+# # plt.plot(x,y)
+# plt.plot(x,y1)
+# plt.plot(x,y2)
+# plt.show()
 
-plt.legend()
-plt.show()
+# x = np.arange(0, 10, 1)  # arange函数用于创建等差数组,arange返回一个array对象,第三个数代表的是步长
+# plt.plot(x, 2*x)
+# plt.plot(x, x/2)
+# plt.plot(x, x**2)
+# plt.show()
+
+# x = np.arange(-np.pi, np.pi, 0.01)
+# plt.plot(x, np.sin(x), x, np.cos(x))
+# plt.grid(True)
+# plt.show()
+
