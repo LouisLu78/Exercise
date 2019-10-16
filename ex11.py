@@ -4,7 +4,7 @@ import random
 import math
 from ex6 import segment
 
-def randwalk(steps,times,estimated_ds):
+def randwalk(steps,times,estimated_ds=10):
     '''
     The function is to imitate random walk, which starts from the zero point(0,0)
     :param steps: number of steps
@@ -32,13 +32,13 @@ def randwalk(steps,times,estimated_ds):
         else:
             nearstep+=1
         dslist.append(ds)
-    global dsavg
-
 
     print('The average distance for {} walk is {}'.format(times,sum(dslist)/times))
     # print(segment(dslist,10))
     print(nearstep,farstep)
+
+    global dsavg
     dsavg =sum(dslist)/times
-randwalk(100,5000,10)
-randwalk(100,5000,dsavg)
+randwalk(1000,5000)
+randwalk(1000,5000,dsavg)
 
