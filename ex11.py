@@ -45,8 +45,8 @@ import matplotlib.pyplot as plt
 # randwalk(50,1000,dsavg)
 
 def dice():
-    num=random.randint(1,6)
-    if num<=3:
+    num=random.randint(1,100)
+    if num<51:
         luck=False
     else:
         luck=True
@@ -87,7 +87,6 @@ def dice():
 
 def gamble_varied(funds,wager,times):
     counts=1
-    global x, y
     x = []
     y = []
     bet=wager
@@ -104,12 +103,15 @@ def gamble_varied(funds,wager,times):
         if funds<=0:
             break
     # print(segment(x,25),segment(y,25))
+    plt.plot(x, y)
     return x, y
-gamble_varied(10000,1000,1000)
+
+
+for i in range(10):
+    gamble_varied(10000, 1000, 1000)
 
 
 plt.xlabel('Wager times')
 plt.ylabel('Money left')
 plt.title('Simulation of gambling')
-plt.plot(x,y)
 plt.show()
