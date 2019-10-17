@@ -53,7 +53,7 @@
 输入某年某月某日，判断这一天是这一年的第几天？
 '''
 def leapyear(y):
-    judge=None
+
     if y%100==0:
        if y%400==0:
            judge=True
@@ -77,7 +77,7 @@ for i in range(12):
     if month==i+1:
         added_day+=sum(d[0:i])
 
-if leapyear(year)==True:
+if leapyear(year) and month>2:
     added_day+=1
 
 print('This day {} is the {}th day of the year.'.format(date,added_day))
