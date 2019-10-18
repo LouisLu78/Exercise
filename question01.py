@@ -125,11 +125,12 @@ import time
 (2)如果n<>k，但n能被k整除，则应打印出k的值，并用n除以k的商,作为新的正整数你n,重复执行第一步。
 (3)如果n不能被k整除，则用k+1作为k的值,重复执行第一步。
 '''
+
 N=int(input("please input an natural number: "))
+from ex6 import seek_prinum
 import math
 num=N
 factors=[]
-from ex6 import seek_prinum
 pm=seek_prinum(N)
 counts=0
 while counts<len(pm):
@@ -142,8 +143,11 @@ while counts<len(pm):
                 factors.append(pmnumber)
                 num=int(num/pmnumber)
                 break
-
-print('The number has factors as ',factors)
+    counts+=1
+print('{}='.format(N), end='')
+for i in range(len(factors)-1):
+    print('{}*'.format(factors[i]), end='')
+print(factors[-1])
 
 
 
