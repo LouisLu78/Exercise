@@ -49,38 +49,111 @@
 
 
 
-'''
-输入某年某月某日，判断这一天是这一年的第几天？
-'''
-def leapyear(y):
+# '''
+# 输入某年某月某日，判断这一天是这一年的第几天？
+# '''
+# def leapyear(y):
+#
+#     if y%100==0:
+#        if y%400==0:
+#            judge=True
+#        else:
+#            judge=False
+#     elif y%4==0:
+#         judge = True
+#     else:
+#         judge=False
+#     return judge
+#
+# date=int(input("please input a day with the format as YYYYMMDD:"))
+# year=date//10000
+# month=(date-year*10000)//100
+# day=date-year*10000-month*100
+# print(year,month,day)
+#
+# d=[31,28,31,30,31,30,31,31,30,31,30,31]
+# added_day=day
+# for i in range(12):
+#     if month==i+1:
+#         added_day+=sum(d[0:i])
+#
+# if leapyear(year) and month>2:
+#     added_day+=1
+#
+# print('This day {} is the {}th day of the year.'.format(date,added_day))
 
-    if y%100==0:
-       if y%400==0:
-           judge=True
-       else:
-           judge=False
-    elif y%4==0:
-        judge = True
+# '''
+# 题目：输入三个整数x,y,z，请把这三个数由小到大输出。
+#
+# 程序分析：我们想办法把最小的数放到x上，先将x与y进行比较，如果x>y则将x与y的值进行交换，然后再用x与z进行比较，如果x>z则将x与z的值进行交换，这样能使x最小。
+# '''
+# lst=[]
+# for i in range(3):
+#     x=int(input('please input an integer: '))
+#     lst.append(x)
+# lst.sort()
+# print(lst)
+# lst.reverse()
+# print(lst)
+
+# '''
+# 题目：输出 9*9 乘法口诀表。
+# 程序分析：分行与列考虑，共9行9列，i控制行，j控制列。
+# '''
+import time
+# for i in range(1,10):
+#     print()
+#     time.sleep(1)
+#     for j in range(1,i+1):
+#         print('{0:1d}*{1:1d}={2:2d}'.format(j,i,j*i), end=' ')
+
+# '''
+# 古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？
+#
+# 程序分析：兔子的规律为数列1,1,2,3,5,8,13,21....
+# '''
+# a,b=0,1
+# while b<1000:
+#     print(b, end=',')
+#     a,b=b,a+b
+#
+'''
+题目：将一个正整数分解质因数。例如：输入90,打印出90=2*3*3*5。
+
+程序分析：对n进行分解质因数，应先找到一个最小的质数k，然后按下述步骤完成：
+(1)如果这个质数恰等于n，则说明分解质因数的过程已经结束，打印出即可。
+(2)如果n<>k，但n能被k整除，则应打印出k的值，并用n除以k的商,作为新的正整数你n,重复执行第一步。
+(3)如果n不能被k整除，则用k+1作为k的值,重复执行第一步。
+'''
+N=int(input("please input an natural number: "))
+import math
+num=N
+factors=[]
+from ex6 import seek_prinum
+pm=seek_prinum(N)
+counts=0
+while counts<len(pm):
+    if num in pm:
+        factors.append(num)
+        break
     else:
-        judge=False
-    return judge
+        for pmnumber in pm:
+            if num%pmnumber==0:
+                factors.append(pmnumber)
+                num=int(num/pmnumber)
+                break
 
-date=int(input("please input a day with the format as YYYYMMDD:"))
-year=date//10000
-month=(date-year*10000)//100
-day=date-year*10000-month*100
-print(year,month,day)
+print('The number has factors as ',factors)
 
-d=[31,28,31,30,31,30,31,31,30,31,30,31]
-added_day=day
-for i in range(12):
-    if month==i+1:
-        added_day+=sum(d[0:i])
 
-if leapyear(year) and month>2:
-    added_day+=1
 
-print('This day {} is the {}th day of the year.'.format(date,added_day))
+
+
+
+
+
+
+
 
 
 
