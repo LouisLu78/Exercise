@@ -18,9 +18,45 @@ import re
 # soup=BeautifulSoup(a,'html.parser')
 # print(soup.p)
 
-s='Today is hot'
-print(s.find('o'))
-s_re=re.compile(r'o')
-mo=s_re.findall(s)
-print(mo)
+# s='Today is hot'
+# print(s.find('o'))
+# s_re=re.compile(r'o')
+# mo=s_re.findall(s)
+# print(mo)
+# a={1,5,7,9.1,5}
+# print(set(a))
+#
+# Logo_code = { 'BIDU':'Baidu', 'SINA':'Sina', 'YOKU':'Youku' }
+# print(Logo_code.keys())
+# print(Logo_code['YOKU'])
+# print (len(Logo_code))
 
+# for i in range(6,12,2):
+#  print(i)
+# print(range(6,12,2),'finish')
+#
+# a = ['i', 'love', 'coding', 'and', 'free']
+# for index,key in enumerate(a):
+#     print(index,key)
+#
+# for letter in 'ityouknow':     # 第一个实例
+#     if letter == 'n':        # 字母为 n 时跳过输出
+#         continue
+#     print(letter)
+
+# def fib(n):
+#     if n==2 or n==1:
+#         return 1
+#     else:
+#         return fib(n-1)+fib(n-2)
+# print(fib(20))
+
+class Car(object):
+    name = 'BMW'
+    def __init__(self, name):
+        self.name = name
+    def run(self,speed):
+        print('Car-->',self.name,speed,'行驶')
+
+c=Car('car')
+print(c.run('120mph'))

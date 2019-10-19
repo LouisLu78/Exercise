@@ -173,6 +173,31 @@ import time
 #     S+=term(i)
 # S*=a
 # print('The final result for the polynomial is:',S)
+'''
+一个数如果恰好等于它的因子之和，这个数就称为"完数"。例如6=1＋2＋3.编程找出1000以内的所有完数。
+'''
+
+
+def find_factor(n):
+    fac={1}
+    if n==1 or n==2:
+        fac.add(n)
+    else:
+        for i in range(2,n):
+            if n%i==0:
+                fac.add(i),fac.add(int(n/i))
+    return fac
+# print(findfactor(120))
+
+perfect_num=[]
+for i in range(1,1000):
+    sumlist=list(find_factor(i))
+    # print(sumlist)
+    if i==sum(sumlist[:]):
+        perfect_num.append(i)
+
+print(perfect_num)
+
 
 
 
