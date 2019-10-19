@@ -148,29 +148,33 @@ import time
 # for i in range(len(factors)-1):
 #     print('{}*'.format(factors[i]), end='')
 # print(factors[-1])
-import datetime
-print(datetime.date.today().strftime('%Y/%m/%d'))
-# This function is to find today's date.
+#
+#
+# import datetime
+# print(datetime.date.today().strftime('%Y/%m/%d'))
+# # This function is to find today's date.
+#
+# '''
+# Q18: 求s=a+aa+aaa+aaaa+aa...a的值，其中a是一个数字。例如2+22+222+2222+22222(此时共有5个数相加)，几个数相加由键盘控制。
+# 程序分析：关键是计算出每一项的值。
+# '''
+# '''suppose we have N terms'''
+# def term(n):
+#     Sum=0
+#     for i in range(int(n)):
+#         Sum+=10**i
+#     # print(Sum)
+#     return Sum
+#
+# S=0
+# N=int(input('please give the value of N:'))
+# a=int(input('please give the value of a:'))
+# for i in range(1,N+1):
+#     S+=term(i)
+# S*=a
+# print('The final result for the polynomial is:',S)
 
-'''
-Q18: 求s=a+aa+aaa+aaaa+aa...a的值，其中a是一个数字。例如2+22+222+2222+22222(此时共有5个数相加)，几个数相加由键盘控制。
-程序分析：关键是计算出每一项的值。
-'''
-'''suppose we have N terms'''
-def term(n):
-    Sum=0
-    for i in range(int(n)):
-        Sum+=10**i
-    # print(Sum)
-    return Sum
 
-S=0
-N=int(input('please give the value of N:'))
-a=int(input('please give the value of a:'))
-for i in range(1,N+1):
-    S+=term(i)
-S*=a
-print('The final result for the equation is:',S)
 
 
 
