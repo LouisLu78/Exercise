@@ -60,3 +60,21 @@ class Car(object):
 
 c=Car('car')
 print(c.run('120mph'))
+
+dict = {'Name': 'Mary', 'Age': 17}
+
+print("Value : %s" % dict.items())
+
+table = {'Sjoerd': 123, 'Jack': 456, 'Dcab': 789789789789}
+print('Jack: {Jack}; Sjoerd: {Sjoerd}; Dcab: {Dcab}'.format(**table))
+
+with open('GL_050202_01.TXT', 'r+') as f:
+    str = f.readline()
+    # while True:
+    #
+    #     print(str,end='')
+    #     if len(str)==0:
+    #         break
+    for str in f:
+        print(str,end='')
+    f.close()

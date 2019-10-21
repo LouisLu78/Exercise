@@ -174,10 +174,10 @@ import time
 # S*=a
 # print('The final result for the polynomial is:',S)
 '''
-一个数如果恰好等于它的因子之和，这个数就称为"完数"。例如6=1＋2＋3.编程找出1000以内的所有完数。
+Q19:一个数如果恰好等于它的因子之和，这个数就称为"完数"。例如6=1＋2＋3.编程找出1000以内的所有完数。
 '''
 
-
+start_time=time.time()
 def find_factor(n):
     fac={1}
     if n==1 or n==2:
@@ -185,18 +185,22 @@ def find_factor(n):
     else:
         for i in range(2,n):
             if n%i==0:
-                fac.add(i),fac.add(int(n/i))
+                # fac.add(i),fac.add(int(n/i))
+                fac.update({i, int(n/i)})
     return fac
-# print(findfactor(120))
+print(find_factor(120))
 
 perfect_num=[]
-for i in range(1,1000):
+for i in range(1,1001):
     sumlist=list(find_factor(i))
     # print(sumlist)
     if i==sum(sumlist[:]):
         perfect_num.append(i)
 
 print(perfect_num)
+end_time=time.time()
+process_time=end_time-start_time
+print('It takes {}s to finish this process'.format(process_time))
 
 
 
