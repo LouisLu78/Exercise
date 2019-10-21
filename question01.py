@@ -177,31 +177,61 @@ import time
 Q19:一个数如果恰好等于它的因子之和，这个数就称为"完数"。例如6=1＋2＋3.编程找出1000以内的所有完数。
 '''
 
-start_time=time.time()
-def find_factor(n):
-    fac={1}
-    if n==1 or n==2:
-        fac.add(n)
+# start_time=time.time()
+# def find_factor(n):
+#     fac={1}
+#     if n==1 or n==2:
+#         fac.add(n)
+#     else:
+#         for i in range(2,n):
+#             if n%i==0:
+#                 # fac.add(i),fac.add(int(n/i))
+#                 fac.update({i, int(n/i)})
+#     return fac
+# print(find_factor(120))
+#
+# perfect_num=[]
+# for i in range(1,1001):
+#     sumlist=list(find_factor(i))
+#     # print(sumlist)
+#     if i==sum(sumlist[:]):
+#         perfect_num.append(i)
+#
+# print(perfect_num)
+# end_time=time.time()
+# process_time=end_time-start_time
+# print('It takes {}s to finish this process'.format(process_time))
+
+'''
+Q20:题目：一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
+'''
+# def bounce(n):
+#     if n==0:
+#         return 100
+#     else:
+#         return bounce(n-1)*0.5
+# hight=bounce(0)
+# for i in range(1,10):
+#     hight+=2*bounce(i)
+# print('After 10 times of falling down, the route is {} meters'.format(hight))
+# print('The hight of the tenth rebouncing is {} meter'.format(bounce(10)))
+
+# def bounce(n):
+#     h=0
+#     if n==0:
+#         h=100
+#     else:
+#         h=bounce(n-1)*0.5
+#     return h
+'''
+猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个第二天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
+'''
+def peach(k):
+    if k==0:
+        return 1
     else:
-        for i in range(2,n):
-            if n%i==0:
-                # fac.add(i),fac.add(int(n/i))
-                fac.update({i, int(n/i)})
-    return fac
-print(find_factor(120))
-
-perfect_num=[]
-for i in range(1,1001):
-    sumlist=list(find_factor(i))
-    # print(sumlist)
-    if i==sum(sumlist[:]):
-        perfect_num.append(i)
-
-print(perfect_num)
-end_time=time.time()
-process_time=end_time-start_time
-print('It takes {}s to finish this process'.format(process_time))
-
+        return (peach(k-1)+1)*2
+print(peach(9))
 
 
 
