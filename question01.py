@@ -205,35 +205,49 @@ Q19:一个数如果恰好等于它的因子之和，这个数就称为"完数"�
 '''
 Q20:题目：一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
 '''
-# def bounce(n):
-#     if n==0:
-#         return 100
-#     else:
-#         return bounce(n-1)*0.5
-# hight=bounce(0)
-# for i in range(1,10):
-#     hight+=2*bounce(i)
-# print('After 10 times of falling down, the route is {} meters'.format(hight))
-# print('The hight of the tenth rebouncing is {} meter'.format(bounce(10)))
-
-# def bounce(n):
-#     h=0
-#     if n==0:
-#         h=100
-#     else:
-#         h=bounce(n-1)*0.5
-#     return h
-'''
-猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个第二天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
-'''
-def peach(k):
-    if k==0:
-        return 1
+def bounce(n):
+    if n==0:
+        return 100
     else:
-        return (peach(k-1)+1)*2
-print(peach(9))
+        return bounce(n-1)*0.5
+height=bounce(0)
+for i in range(1,10):
+    height+=2*bounce(i)
+print('After 10 times of falling down, the route is {} meters'.format(height))
+print('The height of the tenth rebouncing is {} meter'.format(bounce(10)))
 
+def bounce(n):
+    h=0
+    if n==0:
+        h=100
+    else:
+        h=bounce(n-1)*0.5
+    return h
+print(bounce.__name__)
+'''
+Q21:猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个第二天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
+'''
+# def peach(k):
+#     if k==0:
+#         return 1
+#     else:
+#         return (peach(k-1)+1)*2
+# print(peach(9))
 
+'''
+Q22:题目：两个乒乓球队进行比赛，各出三人。甲队为a,b,c三人，乙队为x,y,z三人。已抽签决定比赛名单。有人向队员打听比赛的名单。a说他不和x比，c说他不和x,z比，请编程序找出三队赛手的名单。
+'''
+# Jia=['a','b','c']
+# Yi=['x','y','z']
+# contest=[]
+# for J in Jia:
+#     for Y in Yi:
+#         contest.append([J,Y])
+# contest.remove(['a','x'])
+# contest.remove(['c','x'])
+# contest.remove(['c','z'])
+# for i in range(len(contest)):
+#     print(contest[i])
 
 
 

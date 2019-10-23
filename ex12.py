@@ -51,30 +51,48 @@ import re
 #         return fib(n-1)+fib(n-2)
 # print(fib(20))
 
-class Car(object):
-    name = 'BMW'
-    def __init__(self, name):
-        self.name = name
-    def run(self,speed):
-        print('Car-->',self.name,speed,'行驶')
+# class Car(object):
+#     name = 'BMW'
+#     def __init__(self, name):
+#         self.name = name
+#     def run(self,speed):
+#         print('Car-->',self.name,speed,'行驶')
+#
+# c=Car('car')
+# print(c.run('120mph'))
+#
+# dict = {'Name': 'Mary', 'Age': 17}
+#
+# print("Value : %s" % dict.items())
+#
+# table = {'Sjoerd': 123, 'Jack': 456, 'Dcab': 789789789789}
+# print('Jack: {Jack}; Sjoerd: {Sjoerd}; Dcab: {Dcab}'.format(**table))
+#
+# with open('GL_050202_01.TXT', 'r+') as f:
+#     str = f.readline()
+#     # while True:
+#     #
+#     #     print(str,end='')
+#     #     if len(str)==0:
+#     #         break
+#     for str in f:
+#         print(str,end='')
+#     f.close()
 
-c=Car('car')
-print(c.run('120mph'))
+# name1='SuSan'
+# if chr('SuSan'. __eq__(name1)):
+#     result='I am from China'
+# else:
+#     result='I am from USA'
+#
+# print(result)
 
-dict = {'Name': 'Mary', 'Age': 17}
-
-print("Value : %s" % dict.items())
-
-table = {'Sjoerd': 123, 'Jack': 456, 'Dcab': 789789789789}
-print('Jack: {Jack}; Sjoerd: {Sjoerd}; Dcab: {Dcab}'.format(**table))
-
-with open('GL_050202_01.TXT', 'r+') as f:
-    str = f.readline()
-    # while True:
-    #
-    #     print(str,end='')
-    #     if len(str)==0:
-    #         break
-    for str in f:
-        print(str,end='')
-    f.close()
+# def spam():
+#     eggs = 99
+#     eggs=bacon()
+#     print(eggs)
+# def bacon():
+#     ham = 101
+#     eggs = 0
+#     return eggs
+# spam()
