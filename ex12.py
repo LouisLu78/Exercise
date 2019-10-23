@@ -96,3 +96,15 @@ import re
 #     eggs = 0
 #     return eggs
 # spam()
+
+# spam=['a', 'b', 'c', 'd']
+# if spam[int('3' * 2) // 11]=='d':
+#     print('you are right')
+# else:
+#     print('you should study harder')
+
+picnicItems = {'apples': 5, 'cups': 2}
+print('I am bringing ' + str(picnicItems.get('cakes')) + ' cakes.')
+
+spam = {'name': 'Zophie', 'age': 7,'color':'black'}
+print('black' in spam.values())

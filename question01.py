@@ -205,25 +205,25 @@ Q19:一个数如果恰好等于它的因子之和，这个数就称为"完数"�
 '''
 Q20:题目：一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
 '''
-def bounce(n):
-    if n==0:
-        return 100
-    else:
-        return bounce(n-1)*0.5
-height=bounce(0)
-for i in range(1,10):
-    height+=2*bounce(i)
-print('After 10 times of falling down, the route is {} meters'.format(height))
-print('The height of the tenth rebouncing is {} meter'.format(bounce(10)))
-
-def bounce(n):
-    h=0
-    if n==0:
-        h=100
-    else:
-        h=bounce(n-1)*0.5
-    return h
-print(bounce.__name__)
+# def bounce(n):
+#     if n==0:
+#         return 100
+#     else:
+#         return bounce(n-1)*0.5
+# height=bounce(0)
+# for i in range(1,10):
+#     height+=2*bounce(i)
+# print('After 10 times of falling down, the route is {} meters'.format(height))
+# print('The height of the tenth rebouncing is {} meter'.format(bounce(10)))
+#
+# def bounce(n):
+#     h=0
+#     if n==0:
+#         h=100
+#     else:
+#         h=bounce(n-1)*0.5
+#     return h
+# print(bounce.__name__)
 '''
 Q21:猴子吃桃问题：猴子第一天摘下若干个桃子，当即吃了一半，还不瘾，又多吃了一个第二天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下的一半零一个。到第10天早上想再吃时，见只剩下一个桃子了。求第一天共摘了多少。
 '''
@@ -248,6 +248,22 @@ Q22:题目：两个乒乓球队进行比赛，各出三人。甲队为a,b,c三�
 # contest.remove(['c','z'])
 # for i in range(len(contest)):
 #     print(contest[i])
+
+'''
+Q24有一分数序列：2/1，3/2，5/3，8/5，13/8，21/13...求出这个数列的前20项之和。
+
+程序分析：请抓住分子与分母的变化规律。
+
+'''
+def fib(n):
+    if n==0 or n==1:
+        return 1
+    else:
+        return fib(n-1)+fib(n-2)
+sum=0
+for i in range(20):
+    sum+=fib(i+2)/fib(i+1)
+print('The sum of the first 20 terms is ',sum)
 
 
 
