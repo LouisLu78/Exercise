@@ -37,15 +37,31 @@ Question:4.10.1
 # print(change(spam1))
 
 '''
-Question 4.10.2
+This is question 6.7
 '''
-# for i in range(6):
-#
-#     for j in range(8):
-#         picture=input()
-#         if picture=='':
-#             break
-#         else:
-#             print(picture,end='')
-#     print()
 
+def maxlength(lis):      #find the value of maximum length in the strings of a given list.
+    a=[]
+    for j in range(len(lis)):
+        a.append(len(lis[j]))
+    maxa=max(a)
+    return maxa
+
+def printtable(tdata):
+    colWidths = [0] * len(tdata)
+    for i in range(len(tdata)):
+        colWidths[i]=maxlength(tdata[i])
+        # print(colWidths[i])
+    width=max(colWidths)
+    for i in tdata:
+        print(i[0].rjust(width),end=' ')
+        for j in range(1,len(i)):
+            print(i[j].ljust(width+1),end='')
+        print()
+
+tableData = [['apples', 'oranges', 'cherries', 'banana'],
+['Alice', 'Bob', 'Carol', 'David'],
+['dogs', 'cats', 'moose', 'goose']]
+
+
+printtable(tableData)

@@ -103,8 +103,15 @@ import re
 # else:
 #     print('you should study harder')
 
-picnicItems = {'apples': 5, 'cups': 2}
-print('I am bringing ' + str(picnicItems.get('cakes')) + ' cakes.')
+# picnicItems = {'apples': 5, 'cups': 2}
+# print('I am bringing ' + str(picnicItems.get('cakes')) + ' cakes.')
+#
+# spam = {'name': 'Zophie', 'age': 7,'color':'black'}
+# print('black' in spam.values())
 
-spam = {'name': 'Zophie', 'age': 7,'color':'black'}
-print('black' in spam.values())
+
+# # colWidths = [0] * len(tableData)
+# # print(colWidths)
+
+#
+
