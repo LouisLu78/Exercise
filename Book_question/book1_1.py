@@ -2,6 +2,7 @@
 '''
 The following are the answers to the questioned listed in book001.
 '''
+import re
 # this is question3.11.1
 # def collatz(num):
 #     if num%2==0:
@@ -40,20 +41,51 @@ Question:4.10.1
 This is question 6.7
 '''
 
-tableData = [['apples', 'oranges', 'cherries', 'banana'],
-['Alice', 'Bob', 'Carol', 'David'],['dogs', 'cats', 'moose', 'goose']]
+# tableData = [['apples', 'oranges', 'cherries', 'banana'],
+# ['Alice', 'Bob', 'Carol', 'David'],['dogs', 'cats', 'moose', 'goose']]
+#
+# def maxlength(lis):      #find the value of maximum length in the strings of a given list.
+#     a=max(list(len(lis[j]) for j in range(len(lis))))
+#     return a
+#
+# def printtable(tdata):
+#     width=max(maxlength(tdata[i]) for i in range(len(tdata)))
+#     for i in tdata:
+#         print(i[0].rjust(width),end=' ')
+#         for j in range(1,len(i)):
+#             print(i[j].ljust(width+1),end='')
+#         print()
+#
+# printtable(tableData)
 
-def maxlength(lis):      #find the value of maximum length in the strings of a given list.
-    a=max(list(len(lis[j]) for j in range(len(lis))))
-    return a
+'''
+This is question8.9.2
+'''
 
-def printtable(tdata):
-    colWidths=list(maxlength(tdata[i]) for i in range(len(tdata)))
-    width=max(colWidths)
-    for i in tdata:
-        print(i[0].rjust(width),end=' ')
-        for j in range(1,len(i)):
-            print(i[j].ljust(width+1),end='')
-        print()
+with open('replacetext.txt', 'w') as f:
+    f.write('The ADJECTIVE panda walked to the NOUN and then VERB. A nearby NOUN was unaffected by these events.')
 
-printtable(tableData)
+f=open('replacetext.txt', 'r')
+message=f.read()
+f.close()
+print(message)
+
+Nounre=re.compile(r'Noun',re.I)
+Adjre=re.compile(r'Adjective',re.I)
+Verbre=re.compile(r'Verb',re.I)
+
+text=Nounre.sub('chandelier', message,1)
+text=Nounre.sub('pickup truck', text)
+text=Adjre.sub('silly', text)
+text=Verbre.sub('screamed', text)
+
+print(text)
+
+with open('subtext.txt', 'w') as f:
+    f.write(text)
+f=open('subtext.txt', 'r')
+text=f.read()
+print(text)
+f.close()
+
+
