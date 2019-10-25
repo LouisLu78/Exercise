@@ -40,28 +40,20 @@ Question:4.10.1
 This is question 6.7
 '''
 
+tableData = [['apples', 'oranges', 'cherries', 'banana'],
+['Alice', 'Bob', 'Carol', 'David'],['dogs', 'cats', 'moose', 'goose']]
+
 def maxlength(lis):      #find the value of maximum length in the strings of a given list.
-    a=[]
-    for j in range(len(lis)):
-        a.append(len(lis[j]))
-    maxa=max(a)
-    return maxa
+    a=max(list(len(lis[j]) for j in range(len(lis))))
+    return a
 
 def printtable(tdata):
-    colWidths = [0] * len(tdata)
-    for i in range(len(tdata)):
-        colWidths[i]=maxlength(tdata[i])
-        # print(colWidths[i])
+    colWidths=list(maxlength(tdata[i]) for i in range(len(tdata)))
     width=max(colWidths)
     for i in tdata:
         print(i[0].rjust(width),end=' ')
         for j in range(1,len(i)):
             print(i[j].ljust(width+1),end='')
         print()
-
-tableData = [['apples', 'oranges', 'cherries', 'banana'],
-['Alice', 'Bob', 'Carol', 'David'],
-['dogs', 'cats', 'moose', 'goose']]
-
 
 printtable(tableData)

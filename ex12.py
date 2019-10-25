@@ -115,3 +115,9 @@ import re
 
 #
 
+import os
+path1=os.getcwd()
+print(path1)
+
+print(str(path1).split('\\'))
+print(os.listdir(path1))

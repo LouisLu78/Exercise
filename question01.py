@@ -366,17 +366,19 @@ Q38 求一个3*3矩阵主对角线元素之和。
 程序分析：首先判断此数是否大于最后一个数，然后再考虑插入中间的数的情况，插入后此元素之后的数，依次后移一个位置。
 '''
 def inser(lst,num):            #list: a given list; num: a number to be inserted
-
     lst.sort()
     for i in range(len(lst)):
         if num<lst[i]:
             lst.insert(i,num)
+            break
+        elif num>lst[-1]:
+            lst.append(num)
             break
         else:
             continue
     print(lst)
 
 lista=[5,3.14,28,1]
-inser(lista,7)
+inser(lista,29)
 
 
