@@ -62,30 +62,43 @@ This is question 6.7
 This is question8.9.2
 '''
 
-with open('replacetext.txt', 'w') as f:
-    f.write('The ADJECTIVE panda walked to the NOUN and then VERB. A nearby NOUN was unaffected by these events.')
+# with open('replacetext.txt', 'w') as f:
+#     f.write('The ADJECTIVE panda walked to the NOUN and then VERB. A nearby NOUN was unaffected by these events.')
+#
+# f=open('replacetext.txt', 'r')
+# message=f.read()
+# f.close()
+# print(message)
+#
+# Nounre=re.compile(r'Noun',re.I)
+# Adjre=re.compile(r'Adjective',re.I)
+# Verbre=re.compile(r'Verb',re.I)
+#
+# text=Nounre.sub('chandelier', message,1)
+# text=Nounre.sub('pickup truck', text)
+# text=Adjre.sub('silly', text)
+# text=Verbre.sub('screamed', text)
+#
+# print(text)
+#
+# with open('subtext.txt', 'w') as f:
+#     f.write(text)
+# f=open('subtext.txt', 'r')
+# text=f.read()
+# print(text)
+# f.close()
 
-f=open('replacetext.txt', 'r')
-message=f.read()
-f.close()
-print(message)
+'''
+9.8.1编写一个程序， 遍历一个目录树，查找特定扩展名的文件（诸如.pdf 或.jpg）。不论这些文件的位置在哪里， 将它们拷贝到一个新的文件夹中。
+'''
 
-Nounre=re.compile(r'Noun',re.I)
-Adjre=re.compile(r'Adjective',re.I)
-Verbre=re.compile(r'Verb',re.I)
+import os, shutil
+for folderName, subfolders, filenames  in os.walk('C:\\Users\\Basanwei\\Downloads'):
+    for filename in filenames:
+        if filename.endswith('.pdf'):
+            shutil.copy(os.path.join(folderName, filename), 'C:\\QMDownload')
+            print(filename)
 
-text=Nounre.sub('chandelier', message,1)
-text=Nounre.sub('pickup truck', text)
-text=Adjre.sub('silly', text)
-text=Verbre.sub('screamed', text)
 
-print(text)
-
-with open('subtext.txt', 'w') as f:
-    f.write(text)
-f=open('subtext.txt', 'r')
-text=f.read()
-print(text)
-f.close()
 
 
