@@ -116,8 +116,40 @@ import re
 #
 
 import os
-path1=os.getcwd()
-print(path1)
+# path1=os.getcwd()
+# print(path1)
+#
+# print(str(path1).split('\\'))
+# print(os.listdir(path1))
 
-print(str(path1).split('\\'))
-print(os.listdir(path1))
+
+import webbrowser, requests
+# # webbrowser.open('https://mp.weixin.qq.com/s?__biz=MzUyNTQ1NDQzMQ==&mid=2247484562&idx=2&sn=c23e991fa0c9cbcb821846cbde6f88e9&chksm=fa1c99a2cd6b10b4dffa727fa1d97b286e679043b10dd763d411670546829a7ce06d628bfa9e&mpshare=1&scene=1&srcid=&sharer_sharetime=1569720071850&sharer_shareid=9fffc7fa0a5ad851b324126500370832#rd')
+# res = requests.get('http://www.gutenberg.org/cache/epub/1112/pg1112.txt')
+# print(type(res))
+# res.raise_for_status()
+# print(res.text[:260])
+# f=open('downfile.txt', 'wb')
+# for chunk in res.iter_content(100000):
+#     f.write(chunk)
+# f.close()
+
+import bs4
+
+with open('example.html', 'w')as f:
+    f.write('''
+    <!-- This is the example.html example file. -->
+<html><head><title>The Website Title</title></head>
+<body>
+<p>Download my <strong>Python</strong> book from <a href="http://
+inventwithpython.com">my website</a>.</p>
+<p class="slogan">Learn Python the easy way!</p>
+<p>By <span id="author">Al Sweigart</span></p>
+</body></html>
+    ''')
+f=open('example.html')
+print(f)
+fsoup=bs4.BeautifulSoup(f.read())
+elems=fsoup.select('#author')
+print(elems[0].getText())
+print(elems[0].attrs)

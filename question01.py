@@ -351,7 +351,7 @@ Q31 请输入星期几的第一个字母来判断一下是星期几，如果第�
 Q38 求一个3*3矩阵主对角线元素之和。
 '''
 # import numpy as np
-# matrix=np.random.random((3,3))
+# matrix=np.arange(3,12).reshape(3,3)
 # sum2=0
 # print(matrix)
 # for i in range(3):
@@ -365,20 +365,58 @@ Q38 求一个3*3矩阵主对角线元素之和。
 
 程序分析：首先判断此数是否大于最后一个数，然后再考虑插入中间的数的情况，插入后此元素之后的数，依次后移一个位置。
 '''
-def inser(lst,num):            #list: a given list; num: a number to be inserted
-    lst.sort()
-    for i in range(len(lst)):
-        if num<lst[i]:
-            lst.insert(i,num)
-            break
-        elif num>lst[-1]:
-            lst.append(num)
-            break
-        else:
-            continue
-    print(lst)
+# def inser(lst,num):            #list: a given list; num: a number to be inserted
+#     lst.sort()
+#     for i in range(len(lst)):
+#         if num<lst[i]:
+#             lst.insert(i,num)
+#             break
+#         elif num>lst[-1]:
+#             lst.append(num)
+#             break
+#         else:
+#             pass
+#     print(lst)
+#
+# lista=[5,3.14,28,1]
+# inser(lista,6)
 
-lista=[5,3.14,28,1]
-inser(lista,29)
+'''
+Q44 两个 3 行 3 列的矩阵，实现其对应位置的数据相加，并返回一个新矩阵：
+'''
+import numpy as np
+# X = [[12,7,3],
+#     [4 ,5,6],
+#     [7 ,8,9]]
+#
+# Y = [[5,8,1],
+#     [6,7,3],
+#     [4,5,9]]
+#
+#
+# matX=np.array(X)
+# maty=np.array(Y)
+# sum=np.add(matX,maty)
+# print(sum)
+
+import matplotlib.pyplot as plt
 
 
+x=np.linspace(-1.0,1.0,num=500)
+
+y1 = np.sqrt(1-x*x)
+y2 = -np.sqrt(1-x*x)
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('This is a circle with radius of one')
+plt.plot(x,y1,x,y2)
+plt.show()
+
+# t=np.linspace(-np.pi, np.pi, num=100)
+# x=np.cos(t)
+# y=np.sin(t)
+# plt.xlabel('X')
+# plt.ylabel('Y')
+# plt.title('This is a true image of circle with radius of one')
+# plt.plot(x,y)
+# plt.show()

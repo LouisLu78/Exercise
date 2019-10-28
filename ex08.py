@@ -14,8 +14,8 @@ import numpy as np
 # plt.show()
 
 import pandas as pd
-data1=pd.read_csv('GL100108a.csv')
-print(data1)
+# data1=pd.read_csv('GL100108a.csv')
+# print(data1)
 '''This is the fluorescence result of my sample which I synthesized in MPI-Polymer Lab, Germany.
 The following is the sample&measurement information:
 GL100108.SPC	Dateiname	Filename
@@ -41,21 +41,21 @@ X-Wert	Y-Wert	Y-Norm
 
 '''
 
-number0=data1.a.iloc[100:110]
-print(number0)
-print(sum(number0))
+# number0=data1.a.iloc[100:110]
+# print(number0)
+# print(sum(number0))
 # x=data1.a
 # y=data1.b
-plt.xlabel('Wavelength(nm)')
-plt.ylabel('Intensity(a.u.)')
-plt.title('Fluorescence of Zinc Cobalt Oxide')
+# plt.xlabel('Wavelength(nm)')
+# plt.ylabel('Intensity(a.u.)')
+# plt.title('Fluorescence of Zinc Cobalt Oxide')
 # plt.plot(x,y,label='ZnCoO169')
 # plt.legend()
 # plt.show()
-number=data1.iloc[3]
-print(number)
-number1=data1.iat[4,2]
-print(number1)
+# number=data1.iloc[3]
+# print(number)
+# number1=data1.iat[4,2]
+# print(number1)
 
 # x=np.linspace(-10.0,9.0,num=50)
 #
@@ -78,4 +78,7 @@ print(number1)
 # plt.grid(True)
 # plt.show()
 
-
+x=np.linspace(-5.0,5.0,num=50)
+y=x*2
+plt.plot(x,y)
+plt.show()

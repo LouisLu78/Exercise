@@ -93,7 +93,7 @@ This is question8.9.2
 '''
 
 import os, shutil
-for folderName, subfolders, filenames  in os.walk('C:\\Users\\Basanwei\\Downloads'):
+for folderName, subfolders, filenames  in os.walk('F:'):
     for filename in filenames:
         if filename.endswith('.pdf'):
             shutil.copy(os.path.join(folderName, filename), 'C:\\QMDownload')
