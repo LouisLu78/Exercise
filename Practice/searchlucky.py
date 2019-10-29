@@ -20,7 +20,7 @@ import docx
 mydoc123=docx.Document("D:\\Arbeiten\\myfiles\\Arbeiten\\学术评论之一百二十三.docx")
 print('Mydoc123 contains {} paragraghs'.format(len(mydoc123.paragraphs)))
 for i in range(len(mydoc123.paragraphs)):
-    print('This is the {} paragragh...'.format(i+1))
+    print('This is the paragraph {}...'.format(i+1))
     print(mydoc123.paragraphs[i].text, end='\n')
 # print(mydoc123.paragraphs[1].text)
 # print('Paragragh 1 contains {} runs'.format(len(mydoc123.paragraphs[1].runs)))
