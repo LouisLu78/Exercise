@@ -35,12 +35,12 @@ import bs4, webbrowser, sys, requests
 # doc123= retrive_text("D:\\Arbeiten\\myfiles\\Arbeiten\\学术评论之一百二十三.docx")
 # print(doc123)
 # print(len(str(doc123)))
-
-# with open('downfile.txt','r') as f:
-#     cont=f.read()
-# newdoc=docx.Document()
-# newdoc.add_paragraph(cont)
-# newdoc.save('downfile.docx')
+import docx
+with open('downfile.txt','r') as f:
+    cont=f.read()
+newdoc=docx.Document()
+newdoc.add_paragraph(cont)
+newdoc.save('downfile.docx')
 
 # def cal(n):
 #     result=1
