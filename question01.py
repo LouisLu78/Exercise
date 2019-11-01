@@ -384,39 +384,113 @@ Q38 求一个3*3矩阵主对角线元素之和。
 '''
 Q44 两个 3 行 3 列的矩阵，实现其对应位置的数据相加，并返回一个新矩阵：
 '''
-import numpy as np
-X = [[12,7,3],
-    [4 ,5,6],
-    [7 ,8,9]]
+# import numpy as np
+# X = [[12,7,3],
+#     [4 ,5,6],
+#     [7 ,8,9]]
+#
+# Y = [[5,8,1],
+#     [6,7,3],
+#     [4,5,9]]
+#
+#
+# matX=np.array(X)
+# maty=np.array(Y)
+# sum=np.add(matX,maty)
+# print(sum)
+#
+# import matplotlib.pyplot as plt
+#
+#
+# x=np.linspace(-1.0,1.0,num=500)
+#
+# y1 = np.sqrt(1-x*x)
+# y2 = -np.sqrt(1-x*x)
+# plt.xlabel('X')
+# plt.ylabel('Y')
+# plt.title('This is a circle with radius of one')
+# plt.plot(x,y1,x,y2)
+# plt.show()
+#
+# t=np.linspace(-np.pi, np.pi, num=500)
+# x=np.cos(t)
+# y=np.sin(t)
+# plt.xlabel('X')
+# plt.ylabel('Y')
+# plt.title('This is a true image of circle with radius of one')
+# plt.plot(x,y)
+# plt.show()
 
-Y = [[5,8,1],
-    [6,7,3],
-    [4,5,9]]
+'''
+有 n 个整数，使其前面各数顺序向后移 m 个位置，最后 m 个数变成最前面的 m 个数
+'''
+# def migration(list, m):
+#     n=len(list)
+#     list_end=list[n-1]
+#     for i in range(n-1,-1,-1):
+#         list[i]=list[i-1]
+#     list[0]=list_end
+#     m-=1
+#     while m>0:
+#         migration(list, m)
+#     return list
+# list_b=[5,3,28,1]
+# migration(list_b, 2)
+# print(list_b)
+
+'''
+有n个人围成一圈，顺序排号。从第一个人开始报数（从1到3报数），凡报到3的人退出圈子，问最后留下的是原来第几号的那位。
+'''
+# def count(n):
+#     i,m,k=0,0,0
+#     num=list(range(1,n+1))
+#     while m < n - 1:
+#
+#         if num[i] != 0:
+#             k += 1
+#         if k == 3:
+#             num[i] = 0
+#             k = 0
+#             m += 1
+#         i += 1
+#         if i == n:
+#             i = 0
+#
+#     i = 0
+#     while num[i] == 0:
+#         i += 1
+#     print(num[i])
+#
+# count(34)
+#
+# a=[3,6,4,8,17] #Q73
+# print(a[::-1])
+
+'''
+Q76 :编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数1/1+1/3+...+1/n
+'''
+def add(n):
+    summ=0
+    while n>0:
+        summ+=1/n
+        n=n-2
+
+    return summ
+print(add(5))
+print(add(4))
 
 
-matX=np.array(X)
-maty=np.array(Y)
-sum=np.add(matX,maty)
-print(sum)
-
-import matplotlib.pyplot as plt
 
 
-x=np.linspace(-1.0,1.0,num=500)
 
-y1 = np.sqrt(1-x*x)
-y2 = -np.sqrt(1-x*x)
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.title('This is a circle with radius of one')
-plt.plot(x,y1,x,y2)
-plt.show()
 
-t=np.linspace(-np.pi, np.pi, num=500)
-x=np.cos(t)
-y=np.sin(t)
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.title('This is a true image of circle with radius of one')
-plt.plot(x,y)
-plt.show()
+
+
+
+
+
+
+
+
+
+

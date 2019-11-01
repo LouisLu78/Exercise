@@ -19,3 +19,9 @@ screen=pyautogui.screenshot()
 screen.save('screen.PNG')
 print(pyautogui.locateOnScreen('screen.PNG'))
 print(pyautogui.locateOnScreen('yuna.PNG'))
+
+import time
+pyautogui.click(100,100)
+pyautogui.typewrite('hello, I am a beginner for programming.')
+time.sleep(1)
+pyautogui.hotkey('alt', '3')
