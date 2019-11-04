@@ -515,22 +515,16 @@ Q89 某个公司采用公用电话传递数据，数据是四位的整数，在�
 num=input('please input a 4-digit number:')
 c=list(int(num[i])for i in range(len(num)))
 sum=0
-c.reverse()
 
 for i in range(4):
     c[i]+=5
     c[i]=c[i]%10
 
-b=c[0]
-c[0]=c[3]
-c[3]=b
-
-b=c[1]
-c[1]=c[2]
-c[2]=b
+c[0],c[3]=c[3],c[0]
+c[1],c[2]=c[2],c[1]
 
 for i in range(4):
-    sum+=c[i]*10**i
+    sum+=c[3-i]*10**i
 print(sum)
 
 
