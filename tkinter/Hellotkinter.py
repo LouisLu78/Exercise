@@ -107,6 +107,7 @@ display=App(root)
 root.mainloop()
 '''
 
+'''example 4
 class App():
     def __init__(self, master):
         self.master=master
@@ -129,5 +130,74 @@ class App():
 
 root=Tk()
 root.title('Simple case reaction')
+display=App(root)
+root.mainloop()
+'''
+
+
+# class App():
+#     def __init__(self, master):
+#         self.master=master
+#         self.initwidgets()
+#
+#     def initwidgets(self):
+#         self.label = Label(self.master, width=30, font=('Courier', 20), bg='white')   #install a label and one button
+#         self.label.pack()
+#         okButton = Button(self.master, text="click me once or twice")
+#         okButton.pack(fill=BOTH, expand=YES)
+#
+#         okButton.bind('<Button-1>', self.one)
+#         okButton.bind('<Double-1>', self.double)
+#
+#     def one(self, event):
+#         self.label['text'] ="left_button_once:%s" % event.widget['text']
+#     def double(self, event):
+#         self.label['text'] ="left_button_twice, exit the process:%s" % event.widget['text']
+#         import sys
+#         sys.exit()
+#
+# root=Tk()
+# root.title('Example for the method of binding')
+# display=App(root)
+# root.mainloop()
+
+class App():
+    def __init__(self, master):
+        self.master=master
+        self.initWidgets()
+        self.expr=None
+    def initWidgets(self):
+        self.show = Label(relief=SUNKEN, font=('Courier New', 24), width=25,bg='white', anchor=E)
+        self.show.pack(side=TOP, pady=10)
+        p = Frame(self.master)
+        p.pack(side=TOP)
+        names = ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "*", "/", ".", "=")
+        for i in range(len(names)):
+            b = Button(p, text=names[i], font=('Verdana', 20), width=6)
+            b.grid(row=i//4, column=i%4)
+            b.bind('<Button-1>', self.click)
+            if b['text'] == '=': b.bind('<Double-1>', self.clean)
+
+    def click(self, event):
+        if (event.widget['text'] in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.')):
+            self.show['text'] = self.show['text'] + event.widget['text']
+        elif (event.widget['text'] in ('+', '-', '*', '/')):
+            if self.expr is None:
+                self.expr = self.show['text'] + event.widget['text']
+            else:
+                self.expr = self.expr + self.show['text'] + event.widget['text']
+            self.show['text'] = ''
+        elif (event.widget['text'] == '=' and self.expr is not None):
+            self.expr = self.expr + self.show['text']
+            print(self.expr)
+            self.show['text'] = str(eval(self.expr))
+            self.expr = None
+
+    def clean(self, event):
+        self.expr = None
+        self.show['text'] = ''
+
+root=Tk()
+root.title('Calculator')
 display=App(root)
 root.mainloop()

@@ -35,12 +35,12 @@ import bs4, webbrowser, sys, requests
 # doc123= retrive_text("D:\\Arbeiten\\myfiles\\Arbeiten\\学术评论之一百二十三.docx")
 # print(doc123)
 # print(len(str(doc123)))
-import docx
-with open('downfile.txt','r') as f:
-    cont=f.read()
-newdoc=docx.Document()
-newdoc.add_paragraph(cont)
-newdoc.save('downfile.docx')
+# import docx
+# with open('downfile.txt','r') as f:
+#     cont=f.read()
+# newdoc=docx.Document()
+# newdoc.add_paragraph(cont)
+# newdoc.save('downfile.docx')
 
 # def cal(n):
 #     result=1
@@ -54,13 +54,42 @@ newdoc.save('downfile.docx')
 # print('The result has {} digits.'.format(len(str(product))))
 # print('It takes {} seconds to finish the process.'.format(end-start))
 
+# import datetime
+# dt=datetime.datetime.today()
+# now=datetime.datetime.now()
+# print(dt)
+# print(now)
+#
+# import subprocess
+# subprocess.Popen(['C:\\Windows\\notepad.exe', 'C:\\hello.txt'])
+
+
+import requests
+import shutil, os
 import datetime
-dt=datetime.datetime.today()
-now=datetime.datetime.now()
-print(dt)
-print(now)
-
 import subprocess
-subprocess.Popen(['C:\\Windows\\notepad.exe', 'C:\\hello.txt'])
 
+today=datetime.datetime.now()
+Today=today.strftime('%Y_%m_%d')
+newsfolder='C:\\Users\\Basanwei\\Desktop\\news'
+
+
+urls={'Yahoo':'http://news.yahoo.com','MSN':'http://www.msn.com/en-us/news/world',
+    'FOX':'https://www.foxnews.com/world', 'CNN':'https://edition.cnn.com/world'}
+for url in urls.items():
+    res=requests.get(url[1], stream=True)
+
+    if res.status_code ==200:
+        print('The internet for {} is connected.'.format(url[0]))
+        with open('news.html', 'wb') as tb:
+            for chunk in res.iter_content(100000):
+                tb.write(chunk)
+        filename=os.path.join(newsfolder, '{}_news_{}.html'.format(url[0], Today))
+        shutil.move('news.html', filename)
+        print('done')
+        subprocess.Popen(["D:\Program files\Msedge\msedge.exe",filename])
+    else:
+        print('The internet connection for {} doesn\'t work today.'.format(url[0]))
+
+print('Enjoy yourself in reading today\'s news.')
 

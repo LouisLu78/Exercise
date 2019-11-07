@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Exercise.iml" filepath="$PROJECT_DIR$/.idea/Exercise.iml" />
+      <module fileurl="file://$USER_HOME$/Flask/.idea/Flask.iml" filepath="$USER_HOME$/Flask/.idea/Flask.iml" />
+      <module fileurl="file://$USER_HOME$/Tkinter/.idea/Tkinter.iml" filepath="$USER_HOME$/Tkinter/.idea/Tkinter.iml" />
+      <module fileurl="file://$USER_HOME$/djangogirls/.idea/djangogirls.iml" filepath="$USER_HOME$/djangogirls/.idea/djangogirls.iml" />
       <module fileurl="file://$USER_HOME$/PycharmProjects/mypyc/.idea/mypyc.iml" filepath="$USER_HOME$/PycharmProjects/mypyc/.idea/mypyc.iml" />
     </modules>
   </component>
