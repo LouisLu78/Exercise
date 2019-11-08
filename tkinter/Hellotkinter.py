@@ -160,7 +160,7 @@ root.mainloop()
 # root.title('Example for the method of binding')
 # display=App(root)
 # root.mainloop()
-
+'''
 class App():
     def __init__(self, master):
         self.master=master
@@ -199,5 +199,83 @@ class App():
 
 root=Tk()
 root.title('Calculator')
+display=App(root)
+root.mainloop()
+'''
+
+from tkinter import ttk
+'''
+class App():
+    def __init__(self, master):
+        self.master=master
+        self.initWidgets()
+        self.expr=None
+    def initWidgets(self):
+        cb = ttk.Combobox(self.master, font=24)
+        cb['values'] = ('Python', 'Swift', 'Kotlin')
+        cb.pack(side=LEFT, fill=X, expand=YES)
+        f = ttk.Frame(self.master)
+        f.pack(side=RIGHT, fill=BOTH, expand=YES)
+        lab = ttk.Label(self.master, text='My label', font=24)
+        lab.pack(side=TOP, fill=BOTH, expand=YES)
+        bn = ttk.Button(self.master, text='My button')
+        bn.pack()
+root=Tk()
+root.title('Calculator')
+display=App(root)
+root.mainloop()
+'''
+'''
+class App():
+    def __init__(self, master):
+        self.master = master
+        self.initWidgets()
+
+    def initWidgets(self):
+        self.st = StringVar()
+        ttk.Entry(self.master, textvariable=self.st, width=24, font=('StSong', 20, 'bold'),
+        foreground='red').pack(fill=BOTH, expand=YES)
+        f=Frame(self.master)
+        f.pack()
+        ttk.Button(f, text='改变', command=self.change).pack(side=LEFT)
+        ttk.Button(f, text='获取', command=self.get).pack(side=LEFT)
+    def change(self):
+        books = ('疯狂Python讲义', '疯狂Kotlin讲义', '疯狂Swift讲义')
+        import random
+        self.st.set(books[random.randint(0, 2)])
+    def get(self):
+        from tkinter import messagebox
+        messagebox.showinfo(title='输入内容', message=self.st.get())
+
+root=Tk()
+root.title('Variables Testing')
+display=App(root)
+root.mainloop()
+'''
+class App():
+    def __init__(self, master):
+        self.master = master
+        self.initWidgets()
+
+    def initWidgets(self):
+        bm=PhotoImage(file ='yuna.PNG')
+        self.label = ttk.Label(self.master, text='学编程\n神器', image = bm, font = ('StSong', 20, 'bold'), foreground = 'red' )
+        self.label.bm = bm
+        self.label['compound'] = None
+        self.label.pack()
+        f = ttk.Frame(self.master)
+        f.pack(fill=BOTH, expand=YES)
+        compounds = ("None", "LEFT", "RIGHT", "TOP", "BOTTOM", "CENTER")
+        self.var = StringVar()
+        self.var.set('None')
+        for val in compounds:
+            rb = Radiobutton(f, text = val, padx = 20,
+            variable = self.var, command = self.change_compound,
+            value = val).pack(side=LEFT, anchor=CENTER)
+
+    def change_compound(self):
+        self.label['compound'] = self.var.get().lower()
+root=Tk()
+root.title('Compound Testing')
 display=App(root)
 root.mainloop()

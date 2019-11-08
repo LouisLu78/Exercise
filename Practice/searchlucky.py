@@ -12,9 +12,7 @@ import bs4, webbrowser, sys, requests
 # for i in range(numOpen):
 #     webbrowser.open('http://www.baidu.com' + linkElems[i].get('href'))
 
-# from selenium import webdriver
-# browser=webdriver.Edge()
-# browser.get('www.python.org')
+
 
 # import docx
 # mydoc123=docx.Document("D:\\Arbeiten\\myfiles\\Arbeiten\\学术评论之一百二十三.docx")
@@ -64,32 +62,36 @@ import bs4, webbrowser, sys, requests
 # subprocess.Popen(['C:\\Windows\\notepad.exe', 'C:\\hello.txt'])
 
 
-import requests
+import requests, webbrowser
 import shutil, os
 import datetime
-import subprocess
+
 
 today=datetime.datetime.now()
 Today=today.strftime('%Y_%m_%d')
-newsfolder='C:\\Users\\Basanwei\\Desktop\\news'
-
+newsfolder="C:\\Users\\Basanwei\\Downloads\\news"
 
 urls={'Yahoo':'http://news.yahoo.com','MSN':'http://www.msn.com/en-us/news/world',
     'FOX':'https://www.foxnews.com/world', 'CNN':'https://edition.cnn.com/world'}
+
 for url in urls.items():
     res=requests.get(url[1], stream=True)
 
     if res.status_code ==200:
-        print('The internet for {} is connected.'.format(url[0]))
+        print('The website for {} is connected.'.format(url[0]))
         with open('news.html', 'wb') as tb:
             for chunk in res.iter_content(100000):
                 tb.write(chunk)
         filename=os.path.join(newsfolder, '{}_news_{}.html'.format(url[0], Today))
         shutil.move('news.html', filename)
         print('done')
-        subprocess.Popen(["D:\Program files\Msedge\msedge.exe",filename])
+
     else:
         print('The internet connection for {} doesn\'t work today.'.format(url[0]))
 
 print('Enjoy yourself in reading today\'s news.')
+webbrowser.open('https://news.google.com/?hl=en-US&gl=US&ceid=US:en')
+webbrowser.open('http://www.zaobao.com/news/world')
+
+
 

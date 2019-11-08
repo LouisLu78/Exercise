@@ -134,22 +134,28 @@ import webbrowser, requests
 #     f.write(chunk)
 # f.close()
 
-import bs4
+# import bs4
+#
+# with open('example.html', 'w')as f:
+#     f.write('''
+#     <!-- This is the example.html example file. -->
+# <html><head><title>The Website Title</title></head>
+# <body>
+# <p>Download my <strong>Python</strong> book from <a href="http://
+# inventwithpython.com">my website</a>.</p>
+# <p class="slogan">Learn Python the easy way!</p>
+# <p>By <span id="author">Al Sweigart</span></p>
+# </body></html>
+#     ''')
+# f=open('example.html')
+# print(f)
+# fsoup=bs4.BeautifulSoup(f.read())
+# elems=fsoup.select('#author')
+# print(elems[0].getText())
+# print(elems[0].attrs)
 
-with open('example.html', 'w')as f:
-    f.write('''
-    <!-- This is the example.html example file. -->
-<html><head><title>The Website Title</title></head>
-<body>
-<p>Download my <strong>Python</strong> book from <a href="http://
-inventwithpython.com">my website</a>.</p>
-<p class="slogan">Learn Python the easy way!</p>
-<p>By <span id="author">Al Sweigart</span></p>
-</body></html>
-    ''')
-f=open('example.html')
-print(f)
-fsoup=bs4.BeautifulSoup(f.read())
-elems=fsoup.select('#author')
-print(elems[0].getText())
-print(elems[0].attrs)
+
+from selenium import webdriver
+browser=webdriver.Edge("C:\\Users\\Basanwei\\AppData\\Local\\Programs\\Python\\Python37\\msedgedriver.exe")
+browser.maximize_window()
+browser.get('http://hotmail.com')
