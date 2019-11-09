@@ -90,7 +90,7 @@ This is question8.9.2
 
 '''
 9.8.1编写一个程序， 遍历一个目录树，查找特定扩展名的文件（诸如.pdf 或.jpg）。不论这些文件的位置在哪里， 将它们拷贝到一个新的文件夹中。
-'''
+
 
 import os, shutil
 for folderName, subfolders, filenames  in os.walk('F:'):
@@ -98,6 +98,33 @@ for folderName, subfolders, filenames  in os.walk('F:'):
         if filename.endswith('.pdf'):
             shutil.copy(os.path.join(folderName, filename), 'C:\\QMDownload')
             print(filename)
+            '''
+
+def check_code(code):
+    str(code)
+    realphalower=re.compile(r'[a-z]')
+    realphaupper = re.compile(r'[A-Z]')
+    redig=re.compile(r'[0-9]')
+    respace=re.compile(r'\s|\.')
+    flag=True
+
+    if len(code)<8:
+        flag=False
+    elif respace.search(code)!=None:
+        flag=False
+    elif realphalower.search(code)==None or realphaupper.search(code)==None or redig.search(code)==None:
+        flag=False
+    else:
+        pass
+
+    return flag
+passcode=input('Please enter your password:')
+if check_code(passcode):
+    print('The given password is qualified. ')
+else:
+    print('Your password doesn\'t meet our requirement.')
+
+
 
 
 
