@@ -1,5 +1,5 @@
 # -*- coding:utf8 -*-
-import bs4, webbrowser, sys, requests
+# import bs4, webbrowser, sys, requests
 
 # print('searching in baidu...')
 # res=requests.get('http://www.baidu.com/s?wd=' + ' '.join(sys.argv[1:]))
@@ -65,18 +65,20 @@ import bs4, webbrowser, sys, requests
 import requests, webbrowser
 import shutil, os
 import datetime
+import random
 
 
 today=datetime.datetime.now()
 Today=today.strftime('%Y_%m_%d')
 newsfolder="C:\\Users\\Basanwei\\Downloads\\news"
+if os.path.exists(newsfolder)==False:
+    os.makedirs(newsfolder)
 
 urls={'Yahoo':'http://news.yahoo.com','MSN':'http://www.msn.com/en-us/news/world',
     'FOX':'https://www.foxnews.com/world', 'CNN':'https://edition.cnn.com/world'}
 
 for url in urls.items():
     res=requests.get(url[1], stream=True)
-
     if res.status_code ==200:
         print('The website for {} is connected.'.format(url[0]))
         with open('news.html', 'wb') as tb:
@@ -85,13 +87,12 @@ for url in urls.items():
         filename=os.path.join(newsfolder, '{}_news_{}.html'.format(url[0], Today))
         shutil.move('news.html', filename)
         print('done')
-
     else:
         print('The internet connection for {} doesn\'t work today.'.format(url[0]))
 
 print('Enjoy yourself in reading today\'s news.')
-webbrowser.open('https://news.google.com/?hl=en-US&gl=US&ceid=US:en')
-webbrowser.open('http://www.zaobao.com/news/world')
 
-
+newsurl=random.sample(list(urls.values()),2)
+for url in newsurl:
+    webbrowser.open(url)
 
