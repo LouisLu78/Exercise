@@ -63,10 +63,8 @@
 
 
 import requests, webbrowser
-import shutil, os
+import shutil, os, random
 import datetime
-import random
-
 
 today=datetime.datetime.now()
 Today=today.strftime('%Y_%m_%d')

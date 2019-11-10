@@ -99,6 +99,9 @@ for folderName, subfolders, filenames  in os.walk('F:'):
             shutil.copy(os.path.join(folderName, filename), 'C:\\QMDownload')
             print(filename)
             '''
+'''
+7.18.1 强口令检测
+写一个函数，它使用正则表达式， 确保传入的口令字符串是强口令。 强口令的定义是： 长度不少于 8 个字符， 同时包含大写和小写字符， 至少有一位数字。
 
 def check_code(code):
     str(code)
@@ -112,7 +115,7 @@ def check_code(code):
         flag=False
     elif respace.search(code)!=None:
         flag=False
-    elif realphalower.search(code)==None or realphaupper.search(code)==None or redig.search(code)==None:
+    elif realphalower.search(code) is None or realphaupper.search(code)is None or redig.search(code) is None:
         flag=False
     else:
         pass
@@ -123,6 +126,17 @@ if check_code(passcode):
     print('The given password is qualified. ')
 else:
     print('Your password doesn\'t meet our requirement.')
+    
+'''
+def is_valid_email(addr):
+    Regex=re.compile(r'^[a-z]+(\.)*[a-z]+@[a-z]+\.com', re.I)
+    Mo=Regex.search(addr)
+    if Mo != None:
+        return True
+if is_valid_email('bob#example.com'):
+    print('it\'s valid')
+else:
+    print('it\'s not a valid email')
 
 
 
