@@ -161,8 +161,8 @@ browser.maximize_window()
 browser.get('http://hotmail.com')'''
 
 import requests
-res=requests.get('https://www.bilibili.com/video/av18123957/?p=23')
+res=requests.get('https://mp.weixin.qq.com/s/SyC_LLQL8AU3i6wYNlOdNQ')
 res.raise_for_status()
-with open('bili.html', 'wb') as f:
+with open('pyquestions.html', 'wb') as f:
     for chunk in res.iter_content(100000):
         f.write(chunk)

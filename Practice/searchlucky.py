@@ -69,7 +69,7 @@ import datetime
 today=datetime.datetime.now()
 Today=today.strftime('%Y_%m_%d')
 newsfolder="C:\\Users\\Basanwei\\Downloads\\news"
-if os.path.exists(newsfolder)==False:
+if not os.path.exists(newsfolder):
     os.makedirs(newsfolder)
 
 urls={'Yahoo':'http://news.yahoo.com','MSN':'http://www.msn.com/en-us/news/world',

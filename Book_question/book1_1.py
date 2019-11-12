@@ -134,9 +134,9 @@ def is_valid_email(addr):
     if Mo != None:
         return True
 if is_valid_email('bob#example.com'):
-    print('it\'s valid')
+    print('it\'s valid.')
 else:
-    print('it\'s not a valid email')
+    print('it\'s not a valid email.')
 
 
 
