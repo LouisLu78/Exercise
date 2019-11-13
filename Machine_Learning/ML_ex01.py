@@ -27,24 +27,31 @@ plt.show()
 # This program is mostly written by myself.
 from matplotlib import pyplot as plt
 import numpy as np
+import requests
+
+res=requests.get('https://archive.ics.uci.edu/ml/machine-learning-databases/00236/seeds_dataset.txt')
+res.raise_for_status()
+with open('seeds_dataset.txt','wb') as f:
+    for chunk in res.iter_content(100000):
+        f.write(chunk)
 
 data = np.loadtxt('seeds_dataset.txt',usecols=(0,2,7))
 area, compactness, target=data[:,0], data[:,1], data[:,2]
 
-plt.xlabel('area')
-plt.ylabel('compactness')
+def plot(x, y):
 
-for t,marker,c in zip(range(1,4),">ox","rgb"):
-    plt.scatter(area[target == t], compactness[target == t], marker=marker, c=c)
-plt.show()
+    plt.xlabel('area')
+    plt.ylabel('compactness')
+
+    for t,marker,c in zip(range(1,4),">ox","rgb"):
+     plt.scatter(x[target == t], y[target == t], marker=marker, c=c)
+    return plt.show()
+plot(area, compactness)
 
 def z_score(feature):
     feature-=np.mean(feature)
     feature /= np.std(feature)
     return feature
 area,compactness=z_score(area),z_score(compactness)
-
-for t,marker,c in zip(range(1,4),">ox","rgb"):
-    plt.scatter(area[target == t], compactness[target == t], marker=marker, c=c)
-plt.show()
+plot(area, compactness)
 
