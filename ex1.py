@@ -31,12 +31,12 @@
 # print(sentence)
 
 # Fibonacci series:
-a, b = 0, 1
-c=[]
-while b<=500000000000:
-      c.append(b)
-      a, b = b, a+b
-print(len(c),c)
+# a, b = 0, 1
+# c=[]
+# while b<=500000000000:
+#       c.append(b)
+#       a, b = b, a+b
+# print(len(c),c)
 #       
 # a, b = 1, 2
 # while b<=1000:
@@ -65,6 +65,7 @@ print(len(c),c)
 #       
 # print()
 # print('we only need these numbers!')
+'''
 class User:
 
     def __init__(self,full_name,birthday):
@@ -92,4 +93,7 @@ print(GL.birthday)
 
 nested_lists = [[1, 2], [[3, 4], [5, 6], [[7, 8], [9, 10], [[11, [12, 13]]]]]]
 flatten = lambda x: [y for l in x for y in flatten(l)] if type(x) is list else [x]
-print(flatten(nested_lists))
+print(flatten(nested_lists))'''
+
+odd_num=list(x for x in range(100) if x%2==0)
+print(odd_num)

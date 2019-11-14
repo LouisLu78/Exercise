@@ -36,22 +36,23 @@ with open('seeds_dataset.txt','wb') as f:
         f.write(chunk)
 
 data = np.loadtxt('seeds_dataset.txt',usecols=(0,2,7))
-area, compactness, target=data[:,0], data[:,1], data[:,2]
+area, compactness, target = data[:,0], data[:,1], data[:,2]
 
 def plot(x, y):
-
     plt.xlabel('area')
     plt.ylabel('compactness')
-
     for t,marker,c in zip(range(1,4),">ox","rgb"):
-     plt.scatter(x[target == t], y[target == t], marker=marker, c=c)
-    return plt.show()
+        plt.scatter(x[target == t], y[target == t], marker=marker, c=c)
+
 plot(area, compactness)
+plt.show()
 
 def z_score(feature):
     feature-=np.mean(feature)
     feature /= np.std(feature)
     return feature
-area,compactness=z_score(area),z_score(compactness)
+
+area, compactness = z_score(area), z_score(compactness)
 plot(area, compactness)
+plt.show()
 

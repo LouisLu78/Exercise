@@ -252,7 +252,7 @@ root.title('Variables Testing')
 display=App(root)
 root.mainloop()
 '''
-
+'''
 class App():
     def __init__(self, master):
         self.master = master
@@ -280,9 +280,8 @@ root=Tk()
 root.title('Compound Testing')
 display=App(root)
 root.mainloop()
-
-
 '''
+
 from tkinter import messagebox
 class App():
     def __init__(self, master):
@@ -323,7 +322,7 @@ root=Tk()
 root.title('Compound Testing')
 display=App(root)
 root.mainloop()
-'''
+
 
 
 

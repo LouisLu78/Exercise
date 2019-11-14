@@ -94,3 +94,25 @@ newsurl=random.sample(list(urls.values()),2)
 for url in newsurl:
     webbrowser.open(url)
 
+'''
+#The program is designed to catch images on website.
+import lassie, requests, os, shutil
+
+imgfolder="C:\\Users\\Basanwei\\Downloads\\images"
+if not os.path.exists(imgfolder):
+    os.makedirs(imgfolder)
+
+data=lassie.fetch('http://xkcd.com')
+# print(data)
+print(data['images'])
+count=0
+for i in data['images']:
+    res = requests.get(i['src'])
+    res.raise_for_status()
+    with open('imge.png', 'wb') as f:
+        for chunk in res.iter_content(100000):
+            f.write(chunk)
+    imgname=os.path.join(imgfolder,'img{}.png'.format(count))
+    shutil.move('imge.png', imgname)
+    count+=1
+print('done')'''
