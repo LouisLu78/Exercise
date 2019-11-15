@@ -46,7 +46,7 @@ for i in range(0, num_samples):
         best_dist=d
         best_i=i
 print("Best post is %i with dist=%.2f" %(best_i, best_dist))'''
-
+'''
 from sklearn.feature_extraction.text import CountVectorizer
 import nltk.stem
 
@@ -96,18 +96,28 @@ min_dist=min(item[1] for item in best_dist)
 for item in best_dist:
     if item[1]==min_dist:
         (best_i, best_d) = item
+
 print("Best post is %i with dist=%.2f" %(best_i, best_d))
 
-# import math
-# def tfidf(term, doc, docset):
-#     tf = float(doc.count(term))/sum(doc.count(w) for w in docset)
-#     idf = math.log(float(len(docset))/(len([doc for doc in docset if term in doc])))
-#     return tf * idf
+import math
+def tfidf(term, doc, docset):
+    tf = float(doc.count(term))/sum(doc.count(w) for w in docset)
+    idf = math.log(float(len(docset))/(len([doc for doc in docset if term in doc])))
+    return tf * idf
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+class StemmedTfidfVectorizer(TfidfVectorizer):
+    def build_analyzer(self):
+        analyzer = super(TfidfVectorizer, self).build_analyzer()
+        return lambda doc: (english_stemmer.stem(w) for w in analyzer(doc))
+
+vectorizer = StemmedTfidfVectorizer(min_df=1, stop_words='english', charset_error='ignore')'''
+
+# import requests
 #
-# from sklearn.feature_extraction.text import TfidfVectorizer
-# class StemmedTfidfVectorizer(TfidfVectorizer):
-#     def build_analyzer(self):
-#         analyzer = super(TfidfVectorizer, self).build_analyzer()
-#         return lambda doc: (english_stemmer.stem(w) for w in analyzer(doc))
-#
-# vectorizer = StemmedTfidfVectorizer(min_df=1, stop_words='english', charset_error='ignore')
+# res=requests.get('http://qwone.com/~jason/20Newsgroups/20news-18828.tar.gz')
+# res.raise_for_status()
+# with open('20news-18828.tar.gz','wb') as f:
+#     for chunk in res.iter_content(100000):
+#         f.write(chunk)
+
