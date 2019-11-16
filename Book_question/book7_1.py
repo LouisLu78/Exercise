@@ -17,9 +17,10 @@ A*=interests(5, 5)
 print('If you save 1000 in the bank, after 5 years you may get %.2f back.'%A )
 
 #Question 1.10
-from math import sqrt, exp, pi
-
 def Gaussian_func(m, s, x):
+
+    from math import sqrt, exp, pi
+
     p=1/((sqrt(2*pi))*s)
     i=((x-m)/s)**2
     return p*exp(-0.5*i)

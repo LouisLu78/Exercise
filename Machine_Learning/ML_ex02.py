@@ -46,7 +46,7 @@ for i in range(0, num_samples):
         best_dist=d
         best_i=i
 print("Best post is %i with dist=%.2f" %(best_i, best_dist))'''
-'''
+
 from sklearn.feature_extraction.text import CountVectorizer
 import nltk.stem
 
@@ -90,15 +90,13 @@ for i in range(0, num_samples):
     post_vec = X_train.getrow(i)
     d = dist_norm(post_vec, new_post_vec)
     print("=== Post %i with dist=%.2f: %s" % (i, d, post))
-    best_dist.append((i,d))
+    best_dist.append(d)
 
-min_dist=min(item[1] for item in best_dist)
-for item in best_dist:
-    if item[1]==min_dist:
-        (best_i, best_d) = item
-
+best_d=min(best_dist)
+best_i=best_dist.index(best_d)
 print("Best post is %i with dist=%.2f" %(best_i, best_d))
 
+'''
 import math
 def tfidf(term, doc, docset):
     tf = float(doc.count(term))/sum(doc.count(w) for w in docset)
