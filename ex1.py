@@ -97,3 +97,5 @@ print(flatten(nested_lists))'''
 
 odd_num=list(x for x in range(100) if x%2==0)
 print(odd_num)
+
+print(1/2)
