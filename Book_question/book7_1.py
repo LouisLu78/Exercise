@@ -2,7 +2,7 @@ def interests(p, n):
     '''
     :param p: interest rate a bank is offered.
     :param n: years
-    :return:  the total amount of money when the deposit is drawn
+    :return:  the total amount of money when the deposit is drawn.
     '''
     import math
     sum=(1+p/100)**n
