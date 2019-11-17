@@ -83,7 +83,7 @@ def dist_norm(v1, v2):
 best_doc = None
 best_dist = []
 best_i = None
-for i in range(0, num_samples):
+for i in range(num_samples):
     post = posts[i]
     if post == new_post:
         continue

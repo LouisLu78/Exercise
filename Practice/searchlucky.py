@@ -76,7 +76,7 @@ urls={'Yahoo':'http://news.yahoo.com','MSN':'http://www.msn.com/en-us/news/world
     'FOX':'https://www.foxnews.com/world', 'CNN':'https://edition.cnn.com/world'}
 
 for url in urls.items():
-    res=requests.get(url[1], stream=True)
+    res=requests.get(url[1], stream=True, timeout=6)
     if res.status_code ==200:
         print('The website for {} is connected.'.format(url[0]))
         with open('news.html', 'wb') as tb:

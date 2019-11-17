@@ -27,3 +27,27 @@ def Gaussian_func(m, s, x):
 m, s, x = 0, 2, 1
 print('The result for the Gaussian function is %.6f' % Gaussian_func(m, s, x))
 
+# import  math
+# print(help(math))
+#Q2.5
+n=100
+odd_num=[num for num in range(n) if num%2==1]
+print(odd_num)
+
+#Q2.11
+x_coordinate=[1+i*0.01 for i in range(100)]
+print(x_coordinate)
+
+'''
+Q.20
+Rewrite the generation of the nested list q,
+q = [r**2 for r in [10**i for i in range(5)]]'''
+
+list_r=[]
+q=[]
+for i in range(5):
+    list_r.append(10**i)
+for r in list_r:
+    q.append(r**2)
+print(q)
+

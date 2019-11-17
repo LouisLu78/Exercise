@@ -441,30 +441,30 @@ Q44 两个 3 行 3 列的矩阵，实现其对应位置的数据相加，并返�
 '''
 有n个人围成一圈，顺序排号。从第一个人开始报数（从1到3报数），凡报到3的人退出圈子，问最后留下的是原来第几号的那位。
 '''
-# def count(n):
-#     i,m,k=0,0,0
-#     num=list(range(1,n+1))
-#     while m < n - 1:
-#
-#         if num[i] != 0:
-#             k += 1
-#         if k == 3:
-#             num[i] = 0
-#             k = 0
-#             m += 1
-#         i += 1
-#         if i == n:
-#             i = 0
-#
-#     i = 0
-#     while num[i] == 0:
-#         i += 1
-#     print(num[i])
-#
-# count(34)
-#
-# a=[3,6,4,8,17] #Q73
-# print(a[::-1])
+def count(n):
+    i,m,k=0,0,0
+    num=list(range(1,n+1))
+    while m < n - 1:
+
+        if num[i] != 0:
+            k += 1
+        if k == 3:
+            num[i] = 0
+            k = 0
+            m += 1
+        i += 1
+        if i == n:
+            i = 0
+
+    i = 0
+    while num[i] == 0:
+        i += 1
+    print(num[i])
+
+count(34)
+
+a=[3,6,4,8,17] #Q73
+print(a[::-1])
 
 '''
 Q76 :编写一个函数，输入n为偶数时，调用函数求1/2+1/4+...+1/n,当输入n为奇数时，调用函数1/1+1/3+...+1/n
@@ -513,7 +513,7 @@ Q89 某个公司采用公用电话传递数据，数据是四位的整数，在�
 '''
 
 num=input('please input a 4-digit number:')
-c=list(int(num[i])for i in range(len(num)))
+c=list(int(i) for i in num)
 sum=0
 
 for i in range(4):
