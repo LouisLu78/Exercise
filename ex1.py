@@ -95,7 +95,10 @@ nested_lists = [[1, 2], [[3, 4], [5, 6], [[7, 8], [9, 10], [[11, [12, 13]]]]]]
 flatten = lambda x: [y for l in x for y in flatten(l)] if type(x) is list else [x]
 print(flatten(nested_lists))'''
 
-odd_num=list(x for x in range(100) if x%2==0)
-print(odd_num)
+# odd_num=list(x for x in range(100) if x%2==0)
+# print(odd_num)
+#
+# print(1/2)
 
-print(1/2)
+import math
+print (help(math))
