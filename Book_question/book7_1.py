@@ -147,6 +147,7 @@ def count_pairs(dna, pair):
         if dna[i:i+2]==pair:
             count+=1
     return count
+
 dna='ACTGCTATCCATAT'
 pair="AT"
 print(count_pairs(dna,pair))
