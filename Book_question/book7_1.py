@@ -62,7 +62,7 @@ res_f1=trapezint1(exp, 0, log(3))
 res_f2=trapezint1(cos, 0, pi)
 res_f3=trapezint1(sin, 0, pi)
 for term in zip(['exp','cos','sin'], [res_f1,res_f2,res_f3]):
-    print(term)'''
+    print(term)
 
 # Q3.10
 # Compute the length of a path.
@@ -80,16 +80,73 @@ print(x)
 print(y)
 print(pathlength(x,y))
 
-'''
+
 Exercise 3.11. Approximate π.
 The value of π equals the circumference of a circle with radius 1/2.Suppose we approximate the circumference by a polygon through N +1
 points on the circle. The length of this polygon can be found using the pathlength function from Exercise 3.10. Compute N + 1 points (xi, yi)
 along a circle with radius 1/2 according to the formulas xi =1/2cos(2πi/N), yi = 1/2sin(2πi/N), i = 0, . . . , N.
 Call the pathlength function and write out the error in the approximation of π for N = 2**k, k = 2, 3, . . . , 10. 
-'''
-list_N=[2**k for k in range(2,11)]
+
+list_N=[2**k for k in range(2,15)]
 for N in list_N:
     x=[0.5*cos(2*pi*i/N) for i in range(N+1)]
     y=[0.5*sin(2*pi*i/N) for i in range(N+1)]
-    print('Pi is approximately equivalent to {}, when N is {}. '.format(pathlength(x,y), N))
+    print('Pi is approximately equivalent to %.8f, when N is %d. ' %(pathlength(x,y), N))
+'''
+'''
+Exercise 3.20. Compute velocity and acceleration from position data;one dimension.
+Let x(t) be the position of an object moving along the x axis. The velocity v(t) and acceleration a(t) can be approximately computed by
+the formulas v(t) ≈ (x(t + Δt) − x(t − Δt))/2Δt , a(t) ≈ (x(t + Δt) − 2x(t) + x(t − Δt))/Δt**2,
+where Δt is a small time interval. As Δt → 0, the above formulas approach the first and second derivative of x(t), which coincide with
+the well-known definitions of velocity and acceleration.
+Write a function kinematics(x, t, dt=1E-6) for computing x, v, and a time t, using the above formulas for v and a with Δt corresponding to
+dt. Let the function return x, v, and a. Test the function with the position function x(t) = e−(t−4)2 and the time point t = 5 (use Δt = 10−5).
 
+from math import exp
+
+
+def x(t):
+    return exp(-(t - 4) ** 2)
+
+def kinematics(x, t, dt=1E-6):
+    s=x(t)
+    v= (x(t+dt)-x(t-dt))/(2*dt)
+    a=(x(t+dt)-2*x(t)+x(t-dt))/dt**2
+
+    return s, v, a
+s,v,a=kinematics(x, 5, dt=1E-5)
+print(s, v, a, sep='\n')'''
+
+'''Q3.30
+Make a table for approximations of cos x.'''
+
+def C(n,x):
+    def term(j, x):
+        if j == 0:
+            return 1
+        else:
+            return -term((j - 1), x) * x ** 2 / (2 * j * (2 * j - 1))
+
+    return sum(term(j,x) for j in range(n+1))
+
+from math import pi
+for x in [4*pi, 6*pi, 8*pi, 10*pi]:
+    print('x=%.4f'%x)
+    for n in [5, 25, 50, 100, 200]:
+        print('%12.2E' %C(n,x), end=' ')
+    print()
+
+'''    
+Exercise 3.34. Find pairs of characters.
+Write a function count_pairs(dna, pair) that returns the number of occurrences of a pair of 
+characters (pair) in a DNA string (dna).'''
+
+def count_pairs(dna, pair):
+    count=0
+    for i in range(0,len(dna)-1):
+        if dna[i:i+2]==pair:
+            count+=1
+    return count
+dna='ACTGCTATCCATAT'
+pair="AT"
+print(count_pairs(dna,pair))
