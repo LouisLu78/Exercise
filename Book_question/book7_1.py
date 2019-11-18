@@ -91,5 +91,5 @@ list_N=[2**k for k in range(2,11)]
 for N in list_N:
     x=[0.5*cos(2*pi*i/N) for i in range(N+1)]
     y=[0.5*sin(2*pi*i/N) for i in range(N+1)]
-    print('Pi is approximately equavalent to {}, when N is {} '.format(pathlength(x,y), N))
+    print('Pi is approximately equivalent to {}, when N is {}. '.format(pathlength(x,y), N))
 
