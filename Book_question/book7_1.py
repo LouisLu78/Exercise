@@ -118,7 +118,7 @@ s,v,a=kinematics(x, 5, dt=1E-5)
 print(s, v, a, sep='\n')'''
 
 '''Q3.30
-Make a table for approximations of cos x.'''
+Make a table for approximations of cos x.
 
 def C(n,x):
     def term(j, x):
@@ -136,10 +136,10 @@ for x in [4*pi, 6*pi, 8*pi, 10*pi]:
         print('%12.2E' %C(n,x), end=' ')
     print()
 
-'''    
+
 Exercise 3.34. Find pairs of characters.
 Write a function count_pairs(dna, pair) that returns the number of occurrences of a pair of 
-characters (pair) in a DNA string (dna).'''
+characters (pair) in a DNA string (dna).
 
 def count_pairs(dna, pair):
     count=0
@@ -150,4 +150,15 @@ def count_pairs(dna, pair):
 
 dna='ACTGCTATCCATAT'
 pair="AT"
-print(count_pairs(dna,pair))
+print(count_pairs(dna,pair))'''
+
+'''Exercise 4.25.
+1. What is the probability of getting two heads when flipping a coin five times?
+This probability corresponds to n = 5 events, where the success of an event means getting head, which has probability p = 1/2, 
+and we look for x = 2 successes.
+'''
+from binomial_distribution import binomial
+
+n,x,p=5,2,0.5
+result=binomial(x,n,p)
+print('The probability is',result)
