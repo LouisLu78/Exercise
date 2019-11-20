@@ -18,11 +18,11 @@ def binomial(x, n, p):
 
 def _verify():
     '''
-    suppose we throw a die 100 times with 20 times we get "6-point", obviously in the case success is 1/6.
+    suppose we throw a die 100 times with 20 times we get "6-point", obviously in this case success is 1/6.
     '''
     x, n, p=20, 100, 1/6
     result=binomial(x,n,p)
-    print('We played %d times with obtaining the six for %d times, the propbability is %12.4E'%(n,x,result))
+    print('We played %d times with obtaining the six for %d times and the propbability is %9.3E.'%(n,x,result))
 
 if __name__ == '__main__':
     _verify()
