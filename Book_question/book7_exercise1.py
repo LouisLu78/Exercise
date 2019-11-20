@@ -17,15 +17,10 @@ Third Edition> by Hans Petter Langtangen. I wrote all the codes myself.
 # print('If you save 1000 in the bank, after 5 years you may get %.2f back.'%A )
 '''
 #Question 1.10
-def Gaussian_func(m, s, x):
+from Gaussian_function import Gaussian_func
 
-    from math import sqrt, exp, pi
-
-    p=1/((sqrt(2*pi))*s)
-    i=((x-m)/s)**2
-    return p*exp(-0.5*i)
 m, s, x = 0, 2, 1
-print('The result for the Gaussian function is %.6f' % Gaussian_func(m, s, x))
+print('The result for the Gaussian function is %.4f' % Gaussian_func(m, s, x))
 
 # import  math
 # print(help(math))
@@ -156,9 +151,27 @@ print(count_pairs(dna,pair))'''
 1. What is the probability of getting two heads when flipping a coin five times?
 This probability corresponds to n = 5 events, where the success of an event means getting head, which has probability p = 1/2, 
 and we look for x = 2 successes.
-'''
+
 from binomial_distribution import binomial
 
 n,x,p=5,2,0.5
 result=binomial(x,n,p)
-print('The probability is',result)
+print('The probability is',result)'''
+
+'''
+exercise 5.1,5.3,5.4
+'''
+import numpy as np
+import matplotlib.pyplot as plt
+def h(x):
+    from numpy import  sqrt, exp, pi
+    p=1/(sqrt(2*pi))
+    i = exp(-0.5*x**2)
+    return p*i
+x=np.linspace(-4,4,100)
+y=h(x)
+plt.xlabel('x')
+plt.ylabel('h(x)')
+plt.title('Plot of Gaussian function')
+plt.plot(x,y)
+plt.show()
