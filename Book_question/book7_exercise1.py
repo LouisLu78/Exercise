@@ -160,14 +160,15 @@ print('The probability is',result)'''
 
 '''
 exercise 5.1,5.3,5.4
-'''
+
 import numpy as np
 import matplotlib.pyplot as plt
+from Gaussian_function import Gaussian_func
+
 def h(x):
-    from numpy import  sqrt, exp, pi
-    p=1/(sqrt(2*pi))
-    i = exp(-0.5*x**2)
-    return p*i
+    Gf=np.vectorize(Gaussian_func)
+    return Gf(0,1,x)
+
 x=np.linspace(-4,4,100)
 y=h(x)
 plt.xlabel('x')
@@ -175,3 +176,61 @@ plt.ylabel('h(x)')
 plt.title('Plot of Gaussian function')
 plt.plot(x,y)
 plt.show()
+
+'''#Exercise 5.14. Implement Lagrange’s interpolation formula.
+'''
+import numpy as np
+def L_k(x, k, xp):
+
+    product=1
+    for i in np.arange(0,len(xp),1):
+        if i!=k:
+            product*=(x-xp[i])/(xp[k]-xp[i])
+        else:
+            continue
+    return product
+
+def p_L(x, xp, yp):
+
+    sum=0
+    for k in np.arange(0,len(xp),1):
+        sum+=yp[k]*L_k(x, k, xp)
+
+def _verify():
+
+    xp=np.linspace(0,np.pi,5)
+    yp=np.sin(xp)
+    for k in range(len(xp)):
+        eps=p_L(xp[k],xp,yp)-yp
+        print(eps)
+
+if __name__=='__main__':
+    _verify()'''
+
+'''
+Exercise 5.17. Plot a wave packet.
+The function (5.18) describes for a fixed value of t a wave localized in space. Make a program
+that visualizes this function as a function of x on the interval [−4, 4] when t = 0. 
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(x,t):
+    from numpy import pi, exp, sin
+
+    p=exp(-(x-3*t)**2)
+    c=sin(3*pi*(x-t))
+    return p*c
+
+x=np.linspace(-4,4,100)
+y=f(x,t=0)
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('Plot of wave packet')
+plt.plot(x,y)
+plt.savefig('wave_packet_ex5.17.png')
+plt.show()'''
+
+'''
+Exercise 5.21. Plot Taylor polynomial approximations to sin x.
+'''
