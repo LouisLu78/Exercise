@@ -75,18 +75,18 @@ if not os.path.exists(newsfolder):
 urls={'Yahoo':'http://news.yahoo.com','MSN':'http://www.msn.com/en-us/news/world',
     'FOX':'https://www.foxnews.com/world', 'CNN':'https://edition.cnn.com/world'}
 
-for url in urls.items():
-    res=requests.get(url[1], stream=True)
+for website in urls:
+    res=requests.get(urls[website], stream=True)
     if res.status_code ==200:
-        print('The website for {} is connected.'.format(url[0]))
-        with open('news.html', 'wb') as tb:
+        print('The website for {} is connected.'.format(website))
+        with open('news.html', 'wb') as fnews:
             for chunk in res.iter_content(100000):
-                tb.write(chunk)
-        filename=os.path.join(newsfolder, '{}_news_{}.html'.format(url[0], Today))
+                fnews.write(chunk)
+        filename=os.path.join(newsfolder, '{}_news_{}.html'.format(website, Today))
         shutil.move('news.html', filename)
         print('done')
     else:
-        print('The internet connection for {} doesn\'t work today.'.format(url[0]))
+        print('The internet connection for {} doesn\'t work today.'.format(website))
 
 print('Enjoy yourself in reading today\'s news.')
 
