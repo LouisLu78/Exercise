@@ -16,7 +16,7 @@ plt.ylabel('y')
 plt.legend('y1', 'y2')
 plt.title('Plotting two curves in the same plot')
 plt.savefig('tmp3.png')
-plt.show()'''
+plt.show()
 
 
 
@@ -43,5 +43,43 @@ for s in s_values:
     plt.draw()
     plt.legend(['s=%4.2f' % s])
     plt.savefig('tmp_%04d.png' % counter)
-    counter += 1
+    counter += 1'''
+
+content='''air 0.0012
+gasoline 0.67
+ice 0.9
+pure water 1.0
+seawater 1.025
+human body 1.03
+limestone 2.6
+granite 2.7
+iron 7.8
+silver 10.5
+mercury 13.6
+gold 18.9
+platinium 21.4
+Earth mean 5.52
+Earth core 13
+Moon 3.3
+Sun mean 1.4
+Sun core 160
+proton 2.8E+14'''
+with open('test.txt', 'w') as f:
+    f.write(content)
+infile=open('test.txt', 'r')
+f1=infile.readlines()
+for line in f1:
+    print (line)
+
+
+
+
+
+
+
+
+
+
+
+
 
