@@ -232,5 +232,54 @@ plt.savefig('wave_packet_ex5.17.png')
 plt.show()'''
 
 '''
-Exercise 5.21. Plot Taylor polynomial approximations to sin x.
+#Exercise 5.21. Plot Taylor polynomial approximations to sin x.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def term(x, j):
+    from math import factorial
+    return ((-1) ** j) * (x ** (2 * j + 1)) / factorial(2 * j + 1)
+
+def S(x,n):
+    result=sum(term(x,j) for j in range(n+1))
+    return result
+
+x=np.linspace(0, 2*np.pi, 100)
+y=S(x, 10)
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.title('Plot of sine function')
+plt.plot(x,y)
+plt.savefig('sine_ex5.21.png')
+plt.show()'''
+
 '''
+Exercise 5.34 Demonstrate energy concepts from physics.
+
+import numpy as np
+import matplotlib.pyplot as plt
+def P(y):
+    #The potential energy
+    return m*g*y
+
+def K(v):
+    #the kinetic energy
+    return 0.5*m*v**2
+def v(t):
+    return v0-g*t
+m,g,v0=50,9.8,10
+t=np.linspace(0, 2*v0/g, 100)
+y=v0*t-0.5*g*t**2
+v=v0-g*t
+f1=P(y)
+f2=K(v)
+f3=f1+f2
+plt.xlabel('time')
+plt.ylabel('Energy')
+plt.title('Plot of Energy of a moving object')
+plt.plot(t,f1,t,f2,t,f3)
+plt.legend(['potential','kinetic','total'])
+plt.savefig('energy_ex5.34.1.png')
+plt.show()'''
