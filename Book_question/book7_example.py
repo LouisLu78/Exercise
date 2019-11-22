@@ -67,6 +67,7 @@ proton 2.8E+14'''
 with open('test.txt', 'w') as f:
     f.write(content)
 infile=open('test.txt', 'r')
+print(infile.readline())
 f1=infile.readlines()
 for line in f1:
     print (line)

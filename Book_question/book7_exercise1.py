@@ -283,3 +283,32 @@ plt.plot(t,f1,t,f2,t,f3)
 plt.legend(['potential','kinetic','total'])
 plt.savefig('energy_ex5.34.1.png')
 plt.show()'''
+
+'''
+Exercise 6.1&6.3. Read a two-column data file.
+'''
+#method one
+with open('xy.dat', 'r') as infile:
+    lines=infile.readlines()
+    x=[float(line.split()[0]) for line in lines]
+    y=[float(line.split()[1]) for line in lines]
+print(x,y)
+
+#method two
+import numpy as np
+import matplotlib.pyplot as plt
+
+data=np.loadtxt('xy.dat')
+x,y=data[:,0],data[:,1]
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Plot by data reading from a file')
+plt.scatter(x,y)
+plt.plot(x,y,'r')
+plt.savefig('ex6.1.png')
+plt.show()
+
+
+
+
