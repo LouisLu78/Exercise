@@ -286,7 +286,7 @@ plt.show()'''
 
 '''
 Exercise 6.1&6.3. Read a two-column data file.
-'''
+
 #method one
 with open('xy.dat', 'r') as infile:
     lines=infile.readlines()
@@ -307,7 +307,17 @@ plt.title('Plot by data reading from a file')
 plt.scatter(x,y)
 plt.plot(x,y,'r')
 plt.savefig('ex6.1.png')
-plt.show()
+plt.show()'''
+
+'''
+Exercise 6.16. Compare data structures for polynomials
+'''
+p={0:0.5,100:2}
+sum=0
+x=1.05
+for power,para in p.items():
+    sum+=float(para)*x**float(power)
+print(sum)
 
 
 
