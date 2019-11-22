@@ -303,7 +303,7 @@ x,y=data[:,0],data[:,1]
 
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('Plot by data reading from a file')
+plt.title('Plot by data read from a file')
 plt.scatter(x,y)
 plt.plot(x,y,'r')
 plt.savefig('ex6.1.png')
