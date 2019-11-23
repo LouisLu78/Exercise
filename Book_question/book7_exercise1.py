@@ -66,7 +66,7 @@ from math import sqrt, pi, cos, sin
 def pathlength(x, y):
 
     sum=0
-    for i in range(1, len(x)):
+    for i in range(0, len(x)):
         sum+=sqrt((x[i]-x[i-1])**2+(y[i]-y[i-1])**2)
     return sum
 
