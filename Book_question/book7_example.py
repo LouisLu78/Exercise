@@ -63,16 +63,29 @@ Earth core 13
 Moon 3.3
 Sun mean 1.4
 Sun core 160
-proton 2.8E+14'''
+proton 2.8E+14
 with open('test.txt', 'w') as f:
     f.write(content)
 infile=open('test.txt', 'r')
 print(infile.readline())
 f1=infile.readlines()
 for line in f1:
-    print (line)
+    print (line)'''
+import sys
+sys.path.append(r'D:\Program files\JetBrains\my_module')
 
 
+
+from math import sin, pi
+from integral import Integral
+from derivative import derivative
+
+G = Integral(sin, 0, n=100)
+result = G(0.5*pi)
+print(result)
+
+res=derivative(sin, pi/3)
+print(res)
 
 
 

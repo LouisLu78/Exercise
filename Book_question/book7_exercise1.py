@@ -156,10 +156,10 @@ from binomial_distribution import binomial
 
 n,x,p=5,2,0.5
 result=binomial(x,n,p)
-print('The probability is',result)'''
+print('The probability is',result)
 
-'''
-exercise 5.1,5.3,5.4
+
+#exercise 5.1,5.3,5.4
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -175,10 +175,10 @@ plt.xlabel('x')
 plt.ylabel('h(x)')
 plt.title('Plot of Gaussian function')
 plt.plot(x,y)
-plt.show()
+plt.show()'''
 
 '''#Exercise 5.14. Implement Lagrange’s interpolation formula.
-'''
+
 import numpy as np
 def L_k(x, k, xp):
 
@@ -311,13 +311,13 @@ plt.show()'''
 
 '''
 Exercise 6.16. Compare data structures for polynomials
-'''
+
 p={0:0.5,100:2}
 sum=0
 x=1.05
 for power,para in p.items():
     sum+=float(para)*x**float(power)
-print(sum)
+print(sum)'''
 
 
 
