@@ -79,21 +79,25 @@ class Quadratic:
             print('%10.3f,%10.3f'%(x, self.value(x)))
 
     def root(self):
+        from math import sqrt
         a, b, c = self.a, self.b, self.c
-        delta=b*2-4*a*c
+        delta=b**2-4*a*c
         if delta>=0:
-            x1,x2=(-b+delta**0.5)/(2*a),(-b-delta**0.5)/(2*a)
+            x1,x2=(-b+sqrt(delta))/(2*a),(-b-sqrt(delta))/(2*a)
         else:
             delta*=-1
-            x1=complex(-b/(2*a),delta**0.5/(2*a))
-            x1 = complex(-b/(2*a), -delta**0.5/(2*a))
+            x1=complex(-b/(2*a),sqrt(delta)/(2*a))
+            x2 = complex(-b/(2*a), -sqrt(delta)/(2*a))
+
         return x1, x2
 
 q=Quadratic(1,-2,-1)
 print('f(-1) =',q.value(-1))
 q.L,q.R=-2,2
 q.table(10)
-x1,x2=q.root()
-print(x1,x2)
+print(q.root())
+q2=Quadratic(1,-2,5)
+print(q2.root())
+
 
 
