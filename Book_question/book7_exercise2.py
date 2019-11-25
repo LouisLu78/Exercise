@@ -154,7 +154,7 @@ A widely used formula for numerical differentiation of a function f(x) takes the
 The goal of this exercise is to use the formula (7.7) to automatically differentiate a mathematical function f(x) implemented as a Python
 function f(x).Implement class Central and include an optional argument h to the constructor in class Central so
 that one can specify the value of h in the approximation (7.7)
-'''
+
 class Central:
     def __init__(self,f,h=1E-5):
         self.f,self.h=f,h
@@ -179,8 +179,34 @@ x=10
 for df.h in (0.5, 0.1, 1E-3, 1E-5, 1E-7, 1E-9, 1E-11):
     df_value = df(x)
     exact = 1/x
-    print("h=%g, f’(%d)=%g (error=%.2E)" % (df.h, x, df_value, exact - df_value))
+    print("h=%g, f’(%d)=%g (error=%.2E)" % (df.h, x, df_value, exact - df_value))'''
 
+'''
+Exercise 7.17. Make a class for summation of series.
+Our task in this exercise is to calculate a sum S(x) = N k=M fk(x),
+where fk(x) is a term in a sequence which is assumed to decrease in absolute value. In class Sum, for computing S(x), the constructor requires the following three arguments: 
+fk(x) as a function f(k, x), M as an int object M, and N as an int object N. A __call__ method computes and returns S(x). The next term in the series, fN+1(x), should
+be computed and stored as an attribute first_neglected_term......Calculate by hand what the output of this test becomes, and use it to
+verify your implementation of class Sum.
+'''
+class Sum:
+    def __init__(self,term,M,N):
+        self.term,self.M,self.N=term,M,N
+
+    def __call__(self, x):
+        term, M, N=self.term,self.M,self.N
+        return sum(term(k,x) for k in range(M,N+1) )
+
+    def first_neglected_term(self):
+        term, N = self.term, self.N
+        return term(N+1,x)
+
+def term(k, x):
+    return (-x)**k
+S = Sum(term, M=0, N=100)
+x = 0.5
+print (S(x))
+print (S.first_neglected_term())
 
 
 
