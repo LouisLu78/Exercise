@@ -100,12 +100,13 @@ print(flatten(nested_lists))'''
 #
 # print(1/2)
 
-# import math
-# print (help(math))
-#
-# print(dir(math))
+import math
+print (help(math))
 
-import random
-print(dir(random))
-print(help(random))
+print(dir(math))
+print(math.log(2.718))
+
+# import random
+# print(dir(random))
+# print(help(random))
 
