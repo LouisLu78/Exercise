@@ -71,6 +71,7 @@ print(infile.readline())
 f1=infile.readlines()
 for line in f1:
     print (line)'''
+
 import sys
 sys.path.append(r'D:\Program files\JetBrains\my_module')
 
@@ -87,7 +88,13 @@ print(result)
 res=derivative(sin, pi/3)
 print(res)
 
+from deriv_central import Central
 
+def g(x):
+    return sin(x)
+
+df=Central(g)
+print(df(pi/4))
 
 
 

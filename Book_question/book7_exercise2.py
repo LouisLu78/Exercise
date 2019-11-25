@@ -187,28 +187,112 @@ Our task in this exercise is to calculate a sum S(x) = N k=M fk(x),
 where fk(x) is a term in a sequence which is assumed to decrease in absolute value. In class Sum, for computing S(x), the constructor requires the following three arguments: 
 fk(x) as a function f(k, x), M as an int object M, and N as an int object N. A __call__ method computes and returns S(x). The next term in the series, fN+1(x), should
 be computed and stored as an attribute first_neglected_term......Calculate by hand what the output of this test becomes, and use it to
-verify your implementation of class Sum.
-'''
+verify your implementation of class Sum.'''
+
 class Sum:
-    def __init__(self,term,M,N):
+    def __init__(self,term,M,N,first_neglected_term=None):
         self.term,self.M,self.N=term,M,N
+        self.first_neglected_term=first_neglected_term
 
     def __call__(self, x):
         term, M, N=self.term,self.M,self.N
+        self.first_neglected_term = term(N + 1, x)
         return sum(term(k,x) for k in range(M,N+1) )
-
-    def first_neglected_term(self):
-        term, N = self.term, self.N
-        return term(N+1,x)
 
 def term(k, x):
     return (-x)**k
+
 S = Sum(term, M=0, N=100)
 x = 0.5
 print (S(x))
-print (S.first_neglected_term())
+print (S.first_neglected_term)
+
+'''
+Exercise 7.27. Vectorize a class for numerical integration.Implement a vectorized version of the Trapezoidal rule in class
+Integral from Chapter 7.3.3. Use sum to compute the sum in the formula, and allow for either Python’s built-in sum function or for the
+sum function from numpy.
 
 
+class Integral:
+    def __init__(self, f, a, n=100):
+        self.f, self.a, self.n = f, a, n
+
+    def trapezoidal(self, f, a, x, n):
+
+        h = (x - a) / n
+        I = 0.5 * (f(a)+f(x))
+        I+= sum(f(a + i * h)for i in range(1, n))
+        I *= h
+        return I
+
+    def __call__(self, x):
+        return self.trapezoidal(self.f, self.a, x, self.n)
+
+def f(x):
+    from math import sin
+    return sin(x)
+G=Integral(f,0)
+result=G(10)
+print(result)'''
+
+
+# import sys
+# sys.path.append(r'D:\Program files\JetBrains\my_module')
+# from deriv_central import Central
+# from math import sin, pi
+#
+# def f1(x):
+#     return sin(x)
+# df=Central(f1)
+# print(df(pi/4))
+
+'''
+Exercise 7.42. Find local and global extrema of a function.
+Extreme points of a function f(x) are normally found by solving
+f (x) = 0. A much simpler method is to evaluate f(x) for a set of
+discrete points in the interval [a, b] and look for local minima and
+maxima among these points. We work with n equally spaced points
+a = x0 < x1 < · · · < xn−1 = b, xi = a + ih, h = (b − a)/(n − 1).
+1. First we find all local extreme points in the interior of the domain.
+Local minima are recognized by
+f(xi−1) > f(xi) < f(xi+1), i = 1, . . . , n − 2.
+Similarly, at a local maximum point xi we have
+f(xi−1) < f(xi) > f(xi+1), i = 1, . . . , n − 2.
+We let Pmin be the set of x values for local minima and Fmin the
+set of the corresponding f(x) values at these minimum points. Two
+sets Pmax and Fmax are defined correspondingly, containing the maximum points and their values.
+2. The boundary points x = a and x = b are for algorithmic simplicity
+also defined as local extreme points: x = a is a local minimum if
+f(a) < f(x1), and a local maximum otherwise. Similarly, x = b is a
+local minimum if f(b) < f(xn−2), and a local maximum otherwise.
+The end points a and b and the corresponding function values must
+be added to the sets Pmin, Pmax, Fmin, Fmax.
+3. The global maximum point is defined as the x value corresponding
+to the maximum value in Fmax. The global minimum point is the x
+value corresponding to the minimum value in Fmin.
+Make a class MinMax with the following functionality:
+'''
+# class MinMax:
+#     def __init__(self,f,a,b,n):
+#         self.f,self.a,self.b,self.n=f,a,b,n
+#
+#     def __call__(self):
+#         return _find_extrema(self)
+#
+#     def get_global_minimum(self):
+#         f,a,b,n=self.f,self.a,self.b,self.n
+#         h = (b-a)/(n-1)
+#         Pmin=[],Fmin=[]
+#         if f(a)<f(a+h):
+#             Pmin.append(a)
+#             Fmin.append(f(a))
+#         for i in range(1,n):
+#             x=a+i*h
+#             if f(x)<f(x-h)and f(x)<f(x+h):
+#                 Pmin.append(x)
+#                 Fmin.append(f(x))
+#         return Pmin, Fmin
+#to-be-finished tomorrow
 
 
 
