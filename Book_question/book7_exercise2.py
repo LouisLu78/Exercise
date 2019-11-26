@@ -385,14 +385,11 @@ for x in range(100):
             T.add((x,y))
             alpha.add(p.f())
 print('The maximum revenue of Prod company is %d.'%max(alpha))
-a,b=[],[]
-for coordinate in list(T):
-    a.append(coordinate[0])
-    b.append(coordinate[-1])
-x=np.array(a)
-y=np.array(b)
-print(x)
-print(y)
+a_array=np.array(list(T)).reshape(-1,2)
+# print(a_array)
+x,y=a_array[:,0],a_array[:,1]
+# print(x)
+# print(y)
 plt.title('The possible product of company Prod')
 plt.scatter(x,y)
 plt.show()
