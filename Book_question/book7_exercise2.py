@@ -275,7 +275,7 @@ be added to the sets Pmin, Pmax, Fmin, Fmax.
 to the maximum value in Fmax. The global minimum point is the x
 value corresponding to the minimum value in Fmin.
 Make a class MinMax with the following functionality:
-'''
+
 class MinMax:
     def __init__(self,f,a,b,n):
         self.f,self.a,self.b,self.n=f,a,b,n
@@ -292,21 +292,21 @@ class MinMax:
         for i in range(1,n-1):
             x=a+i*h
             if f(x)<f(x-h)and f(x)<f(x+h):
-                Pmin.add(x), Fmin.add(f(x))
+                Pmin.add(round(x,4)), Fmin.add(round(f(x),4))
             elif f(x)>f(x-h)and f(x)>f(x+h):
-                Pmax.add(x), Fmax.add(f(x))
+                Pmax.add(round(x,4)), Fmax.add(round(f(x),4))
         if f(a)<f(a+h):
-            Pmin.add(a), Fmin.add(f(a))
+            Pmin.add(a), Fmin.add(round(f(a),4))
         elif f(a)>f(a + h):
-            Pmax.add(a),Fmax.add(f(a))
+            Pmax.add(a),Fmax.add(round(f(a),4))
         if f(b)<f(b-h):
-            Pmin.add(b), Fmin.add(f(b))
+            Pmin.add(b), Fmin.add(round(f(b),4))
         elif f(b)>f(b-h):
-            Pmax.add(b), Fmax.add(f(b))
+            Pmax.add(b), Fmax.add(round(f(b),4))
         if len(Pmin)==0:
             print('It\'s a horizontal line.')
         elif len(Pmin)==1 and len(Pmax)==1:
-            print('It\'s a monotonous line.')
+            print('It\'s monotonous.')
         else:
             global_min=min(Fmin)
             global_max = max(Fmax)
@@ -331,27 +331,71 @@ class MinMax:
         return [(x,f(x)) for x in self.Pmax]
 
     def __str__(self):
-        return 'All minima:%s\nAll maxima:%s\nGlobal minimum:%s\nGlobal maximum:%s'%(str(self.Pmin),str(self.Pmax),str(self.global_min),str(self.global_max))
+        return 'All minima:%s\nAll maxima:%s\nGlobal minimum:%f\nGlobal maximum:%f'\
+               %(str(self.Pmin), str(self.Pmax), self.global_min, self.global_max)
 
 
 def _verify():
-    def f(x):
-        from math import exp, sin, pi
+    from math import exp, sin, pi
+    def f1(x):
         return x ** 2 * exp(-0.2 * x) * sin(2 * pi * x)
-    m = MinMax(f, 0, 4, 5001)
+    m = MinMax(f1, 0, 4, 5001)
     print(m)
 
-    def f(x):
+    def f2(x):
         return x**2
-    m = MinMax(f, 0, 4, 1001)
+    m = MinMax(f2, 0, 4, 1001)
+
+    def f3(x, t=0):
+        p = exp(-(x - 3 * t) ** 2)
+        c = sin(3 * pi * (x - t))
+        return p * c
+    m = MinMax(f3, -4, 4, 5000)
+    print(m)
 
 if __name__=='__main__':
-    _verify()
+    _verify()'''
 
+'''Exercise 7.44. Find the optimal production for a company.
+'''
+class Prod:
+    def __init__(self,x,y):
+        self.x,self.y=int(x),int(y)
 
+    def f(self):
+        x, y=self.x, self.y
+        return 45*x+14*y
 
+    def condition(self):
+        x, y = self.x, self.y
+        if x>=0 and y>=0 and ((2*x+y)<=100) and ((5*x+3*y)<=80) and (4*y<=150):
+            return True
+        else:
+            return False
 
+import numpy as np
+import matplotlib.pyplot as plt
 
+T=set()
+alpha=set()
+for x in range(100):
+    for y in range(100):
+        p=Prod(x,y)
+        if p.condition():
+            T.add((x,y))
+            alpha.add(p.f())
+print('The maximum revenue of Prod company is %d.'%max(alpha))
+a,b=[],[]
+for coordinate in list(T):
+    a.append(coordinate[0])
+    b.append(coordinate[-1])
+x=np.array(a)
+y=np.array(b)
+print(x)
+print(y)
+plt.title('The possible product of company Prod')
+plt.scatter(x,y)
+plt.show()
 
 
 
