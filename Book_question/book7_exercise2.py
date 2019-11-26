@@ -187,17 +187,20 @@ Our task in this exercise is to calculate a sum S(x) = N k=M fk(x),
 where fk(x) is a term in a sequence which is assumed to decrease in absolute value. In class Sum, for computing S(x), the constructor requires the following three arguments: 
 fk(x) as a function f(k, x), M as an int object M, and N as an int object N. A __call__ method computes and returns S(x). The next term in the series, fN+1(x), should
 be computed and stored as an attribute first_neglected_term......Calculate by hand what the output of this test becomes, and use it to
-verify your implementation of class Sum.'''
+verify your implementation of class Sum.
 
 class Sum:
     def __init__(self,term,M,N,first_neglected_term=None):
         self.term,self.M,self.N=term,M,N
-        self.first_neglected_term=first_neglected_term
 
     def __call__(self, x):
         term, M, N=self.term,self.M,self.N
-        self.first_neglected_term = term(N + 1, x)
+        # self.first_neglected_term = term(N + 1, x)
         return sum(term(k,x) for k in range(M,N+1) )
+    def first(self):
+        term, N = self.term, self.N
+        self.first_neglected_term = term(N + 1, x)
+        return self.first_neglected_term
 
 def term(k, x):
     return (-x)**k
@@ -205,7 +208,8 @@ def term(k, x):
 S = Sum(term, M=0, N=100)
 x = 0.5
 print (S(x))
-print (S.first_neglected_term)
+S.first()
+print (S.first_neglected_term)'''
 
 '''
 Exercise 7.27. Vectorize a class for numerical integration.Implement a vectorized version of the Trapezoidal rule in class
@@ -272,27 +276,69 @@ to the maximum value in Fmax. The global minimum point is the x
 value corresponding to the minimum value in Fmin.
 Make a class MinMax with the following functionality:
 '''
-# class MinMax:
-#     def __init__(self,f,a,b,n):
-#         self.f,self.a,self.b,self.n=f,a,b,n
-#
-#     def __call__(self):
-#         return _find_extrema(self)
-#
-#     def get_global_minimum(self):
-#         f,a,b,n=self.f,self.a,self.b,self.n
-#         h = (b-a)/(n-1)
-#         Pmin=[],Fmin=[]
-#         if f(a)<f(a+h):
-#             Pmin.append(a)
-#             Fmin.append(f(a))
-#         for i in range(1,n):
-#             x=a+i*h
-#             if f(x)<f(x-h)and f(x)<f(x+h):
-#                 Pmin.append(x)
-#                 Fmin.append(f(x))
-#         return Pmin, Fmin
-#to-be-finished tomorrow
+class MinMax:
+    def __init__(self,f,a,b,n):
+        self.f,self.a,self.b,self.n=f,a,b,n
+        self._find_extrema()
+
+    def _find_extrema(self):
+        f,a,b,n=self.f,self.a,self.b,self.n
+        h = (b-a)/(n-1)
+        Pmin=set()
+        Fmin=set()
+        Pmax =set()
+        Fmax =set()
+
+        for i in range(1,n-1):
+            x=a+i*h
+            if f(x)<f(x-h)and f(x)<f(x+h):
+                Pmin.add(x), Fmin.add(f(x))
+            elif f(x)>f(x-h)and f(x)>f(x+h):
+                Pmax.add(x), Fmax.add(f(x))
+        if f(a)<f(a+h):
+            Pmin.add(a), Fmin.add(f(a))
+        elif f(a)>f(a + h):
+            Pmax.add(a),Fmax.add(f(a))
+        if f(b)<f(b-h):
+            Pmin.add(b), Fmin.add(f(b))
+        elif f(b)>f(b-h):
+            Pmax.add(b), Fmax.add(f(b))
+        global_min=min(Fmin)
+        global_max = max(Fmax)
+        self.Pmin, self.Fmin, self.global_min=Pmin, Fmin, global_min
+        self.Pmax, self.Fmax, self.global_max=Pmax, Fmax, global_max
+        return [Pmin, Fmin, Pmax, Fmax]
+
+    def get_global_minimum(self):
+        f=self.f
+        return [x for x in self.Pmin if f(x)==self.global_min]
+
+    def get_global_maximum(self):
+        f = self.f
+        return [x for x in self.Pmax if f(x)==self.global_max]
+
+    def get_all_minima(self):
+        f=self.f
+        return [(x,f(x)) for x in self.Pmin]
+
+    def get_all_maxima(self):
+        f = self.f
+        return [(x,f(x)) for x in self.Pmax]
+
+    def __str__(self):
+        return 'All minima:%s\nAll maxima:%s\nGlobal minimum:%s\nGlobal maximum:%s'%(str(self.Pmin),str(self.Pmax),str(self.global_min),str(self.global_max))
+
+
+def _verify():
+    def f(x):
+        from math import exp, sin, pi
+        return x ** 2 * exp(-0.2 * x) * sin(2 * pi * x)
+    m = MinMax(f, 0, 4, 5001)
+    print(m)
+
+if __name__=='__main__':
+    _verify()
+
 
 
 
