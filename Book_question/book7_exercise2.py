@@ -303,11 +303,16 @@ class MinMax:
             Pmin.add(b), Fmin.add(f(b))
         elif f(b)>f(b-h):
             Pmax.add(b), Fmax.add(f(b))
-        global_min=min(Fmin)
-        global_max = max(Fmax)
-        self.Pmin, self.Fmin, self.global_min=Pmin, Fmin, global_min
-        self.Pmax, self.Fmax, self.global_max=Pmax, Fmax, global_max
-        return [Pmin, Fmin, Pmax, Fmax]
+        if len(Pmin)==0:
+            print('It\'s a horizontal line.')
+        elif len(Pmin)==1 and len(Pmax)==1:
+            print('It\'s a monotonous line.')
+        else:
+            global_min=min(Fmin)
+            global_max = max(Fmax)
+            self.Pmin, self.Fmin, self.global_min=Pmin, Fmin, global_min
+            self.Pmax, self.Fmax, self.global_max=Pmax, Fmax, global_max
+            return [Pmin, Fmin, Pmax, Fmax]
 
     def get_global_minimum(self):
         f=self.f
@@ -335,6 +340,10 @@ def _verify():
         return x ** 2 * exp(-0.2 * x) * sin(2 * pi * x)
     m = MinMax(f, 0, 4, 5001)
     print(m)
+
+    def f(x):
+        return x**2
+    m = MinMax(f, 0, 4, 1001)
 
 if __name__=='__main__':
     _verify()
