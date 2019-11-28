@@ -401,7 +401,7 @@ pass
 That is, class Parabola0 does not have any own code, but it inherits from class Line. Demonstrate in a program or 
 interactive session, using methods from Chapter 7.5.5, that an instance of class Parabola0 contains everything 
 (i.e., all attributes and methods) that an instance of class Line contains.
-'''
+
 class Line:
     def __init__(self,c0,c1):
         self.c0,self.c1 = c0,c1
@@ -427,15 +427,15 @@ p0=Parabola0(-5,2)
 print(p0.dump())
 
 '''
-Exercise 9.2. Inherit from classes in Ch. 9.1.
-The task in this exercise is to make a class Cubic for cubic functions
-c3x3 + c2x2 + c1x + c0
-with a call operator and a table method as in classes Line and Parabola from Chapter 9.1. Implement class Cubic by inheriting from class
-Parabola, and call up functionality in class Parabola in the same way as class Parabola calls up functionality in class Line.
-Make a similar class Poly4 for 4-th degree polynomials 
-c4x4 + c3x3 + c2x2 + c1x + c0
-by inheriting from class Cubic. Insert print statements in all the __call__ to help following the program flow. Evaluate cubic and a
-4-th degree polynomial at a point, and observe the printouts from all the superclasses. 
+# Exercise 9.2. Inherit from classes in Ch. 9.1.
+# The task in this exercise is to make a class Cubic for cubic functions
+# c3x3 + c2x2 + c1x + c0
+# with a call operator and a table method as in classes Line and Parabola from Chapter 9.1. Implement class Cubic by inheriting from class
+# Parabola, and call up functionality in class Parabola in the same way as class Parabola calls up functionality in class Line.
+# Make a similar class Poly4 for 4-th degree polynomials
+# c4x4 + c3x3 + c2x2 + c1x + c0
+# by inheriting from class Cubic. Insert print statements in all the __call__ to help following the program flow. Evaluate cubic and a
+# 4-th degree polynomial at a point, and observe the printouts from all the superclasses.
 '''
 class Parabola(Line):
     def __init__(self, c0, c1, c2):
@@ -445,6 +445,7 @@ class Parabola(Line):
     def __call__(self, x):
         c2=self.c2
         return Line.__call__(self,x)+c2*x**2
+        
 p=Parabola(5,-1,2)
 print(p(2))
 print(p.table(-5,5,10))
@@ -470,16 +471,17 @@ class Poly4(Cubic):
     def __call__(self, x):
         c4=self.c4
         return Cubic.__call__(self,x) +c4*x**4
+        
 f=Poly4(-10,8,-1,5,2)
 print(f(1))
 print(f.table(-5,5,10))
 
 '''
-Exercise 9.3. Inherit more from classes in Ch. 9.1.
-Implement a class for the function f(x) = A sin(wx) + ax2 + bx + c.
-The class should have a call operator for evaluating the function for some argument x, and a constructor that takes the 
-function parameters A, w, a, b, and c as arguments. Also a table method as in classes Line and Parabola should be present. 
-Implement the class by deriving it from class Parabola and call up functionality already implemented in class Parabola whenever possible.
+# Exercise 9.3. Inherit more from classes in Ch. 9.1.
+# Implement a class for the function f(x) = A sin(wx) + ax2 + bx + c.
+# The class should have a call operator for evaluating the function for some argument x, and a constructor that takes the
+# function parameters A, w, a, b, and c as arguments. Also a table method as in classes Line and Parabola should be present.
+# Implement the class by deriving it from class Parabola and call up functionality already implemented in class Parabola whenever possible.
 '''
 class Mix(Parabola):
     def __init__(self,A,w,a,b,c):
@@ -496,4 +498,39 @@ class Mix(Parabola):
 m=Mix(2,1,2,-1,5)
 print(m(3))
 print(m.p)
-print(m.table(-5,5,10))
+print(m.table(-5,5,10))'''
+
+'''
+Exercise 9.7. Modify a function class by subclassing.
+Consider the VelocityProfile class from page 350 for computing the function v(r; β, μ0, n, R) in formula (5.23) on page 252. 
+Suppose we want to have v explicitly as a function of r and n (this is necessary if we want to illustrate how the velocity 
+profile, the v(r) curve, varies as n varies). We would then like to have a class VelocityProfile2 that is initialized
+with β, μ0, and R, and that takes r and n as arguments in the __call__ method. Implement such a class by inheriting from class
+VelocityProfile and by calling the __init__ and value methods in the superclass. It should be possible to try the class out
+with the following statements:
+v = VelocityProfile2(beta=0.06, mu0=0.02, R=2)
+# Evaluate v for various n values at r=0
+for n in 0.1, 0.2, 1:
+print v(0, n)
+'''
+class VelocityProfile:
+    def __init__(self, beta, mu0, n, R):
+        self.beta, self.mu0, self.n, self.R = beta, mu0, n, R
+
+    def value(self, r):
+        beta, mu0, n, R = self.beta, self.mu0, self.n, self.R
+        v = (beta/(2.0*mu0))**(1/n)*(n/(n+1))*\
+        (R**(1+1/n) - r**(1+1/n))
+        return v
+
+class VelocityProfile2(VelocityProfile):
+    def __init__(self, beta, mu0, R):
+        VelocityProfile.__init__(self, beta=beta, mu0=mu0, n=None, R=R)
+
+    def __call__(self, r, n):
+        self.n=n
+        return VelocityProfile.value(self,r)
+
+v = VelocityProfile2(beta=0.06, mu0=0.02, R=2)
+for n in [0.1, 0.2, 1]:
+    print(n, v(0, n))
