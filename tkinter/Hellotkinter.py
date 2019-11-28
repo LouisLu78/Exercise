@@ -286,9 +286,9 @@ from tkinter import messagebox
 class App():
     def __init__(self, master):
         self.master = master
-        self.initWidgets()
+        self._initWidgets()
 
-    def initWidgets(self):
+    def _initWidgets(self):
         self.entry=ttk.Entry(self.master, width=44, font=('StSong,',14), foreground='green')
         self.entry.pack(fill=BOTH, expand=YES)
         self.text=Text(self.master, width=44, font=('StSong,',14), foreground='grey')

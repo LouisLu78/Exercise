@@ -357,7 +357,7 @@ if __name__=='__main__':
     _verify()'''
 
 '''Exercise 7.44. Find the optimal production for a company.
-'''
+
 class Prod:
     def __init__(self,x,y):
         self.x,self.y=int(x),int(y)
@@ -368,7 +368,7 @@ class Prod:
 
     def condition(self):
         x, y = self.x, self.y
-        if x>=0 and y>=0 and ((2*x+y)<=100) and ((5*x+3*y)<=80) and (4*y<=150):
+        if x>=0 and y>=0 and (2*x+y<=100) and (5*x+3*y<=80) and (4*y<=150):
             return True
         else:
             return False
@@ -386,14 +386,114 @@ for x in range(100):
             alpha.add(p.f())
 print('The maximum revenue of Prod company is %d.'%max(alpha))
 a_array=np.array(list(T)).reshape(-1,2)
-# print(a_array)
+print(a_array)
 x,y=a_array[:,0],a_array[:,1]
-# print(x)
-# print(y)
+
 plt.title('The possible product of company Prod')
 plt.scatter(x,y)
-plt.show()
+plt.show()'''
 
+'''
+Exercise 9.1. Demonstrate the magic of inheritance.
+Consider class Line from Chapter 9.1.1 and a subclass Parabola0 defined as
+class Parabola0(Line):
+pass
+That is, class Parabola0 does not have any own code, but it inherits from class Line. Demonstrate in a program or 
+interactive session, using methods from Chapter 7.5.5, that an instance of class Parabola0 contains everything 
+(i.e., all attributes and methods) that an instance of class Line contains.
+'''
+class Line:
+    def __init__(self,c0,c1):
+        self.c0,self.c1 = c0,c1
 
+    def __call__(self, x):
+        c0, c1 = self.c0,self.c1
+        return c0+c1*x
 
+    def dump(self):
+        print(self.__dict__)
 
+    def table(self, L, R, n):
+        s=''
+        import numpy as np
+        for x in np.linspace(L, R, n):
+            y = self(x)
+            s +='%12g %12g\n' %(x, y)
+        return s
+
+class Parabola0(Line):
+    pass
+p0=Parabola0(-5,2)
+print(p0.dump())
+
+'''
+Exercise 9.2. Inherit from classes in Ch. 9.1.
+The task in this exercise is to make a class Cubic for cubic functions
+c3x3 + c2x2 + c1x + c0
+with a call operator and a table method as in classes Line and Parabola from Chapter 9.1. Implement class Cubic by inheriting from class
+Parabola, and call up functionality in class Parabola in the same way as class Parabola calls up functionality in class Line.
+Make a similar class Poly4 for 4-th degree polynomials 
+c4x4 + c3x3 + c2x2 + c1x + c0
+by inheriting from class Cubic. Insert print statements in all the __call__ to help following the program flow. Evaluate cubic and a
+4-th degree polynomial at a point, and observe the printouts from all the superclasses. 
+'''
+class Parabola(Line):
+    def __init__(self, c0, c1, c2):
+        Line.__init__(self,c0,c1)
+        self.c2=c2
+
+    def __call__(self, x):
+        c2=self.c2
+        return Line.__call__(self,x)+c2*x**2
+p=Parabola(5,-1,2)
+print(p(2))
+print(p.table(-5,5,10))
+
+class Cubic(Parabola):
+    def __init__(self, c0, c1, c2, c3):
+        Parabola.__init__(self,c0,c1,c2)
+        self.c3 = c3
+
+    def __call__(self, x):
+        c3=self.c3
+        return Parabola.__call__(self,x)+c3*x**3
+
+c=Cubic(-10,8,-1,5)
+print(c(-1))
+print(c.table(-5,5,10))
+
+class Poly4(Cubic):
+    def __init__(self, c0, c1, c2, c3, c4):
+        Cubic.__init__(self,c0,c1,c2,c3)
+        self.c4 = c4
+
+    def __call__(self, x):
+        c4=self.c4
+        return Cubic.__call__(self,x) +c4*x**4
+f=Poly4(-10,8,-1,5,2)
+print(f(1))
+print(f.table(-5,5,10))
+
+'''
+Exercise 9.3. Inherit more from classes in Ch. 9.1.
+Implement a class for the function f(x) = A sin(wx) + ax2 + bx + c.
+The class should have a call operator for evaluating the function for some argument x, and a constructor that takes the 
+function parameters A, w, a, b, and c as arguments. Also a table method as in classes Line and Parabola should be present. 
+Implement the class by deriving it from class Parabola and call up functionality already implemented in class Parabola whenever possible.
+'''
+class Mix(Parabola):
+    def __init__(self,A,w,a,b,c):
+        Parabola.__init__(self,c,b,a)
+        self.A, self.w = A, w
+
+    def __call__(self,x):
+        from math import sin
+        A, w = self.A, self.w
+        p=Parabola.__call__(self,x)
+        self.p=p
+        return p+A*sin(w*x)
+
+m=Mix(2,1,2,-1,5)
+print(m(3))
+print(m.p)
+print(m.table(-5,5,10))
