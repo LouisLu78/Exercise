@@ -512,8 +512,8 @@ v = VelocityProfile2(beta=0.06, mu0=0.02, R=2)
 # Evaluate v for various n values at r=0
 for n in 0.1, 0.2, 1:
 print v(0, n)
-'''
-class VelocityProfile:
+
+class VelocityProfile: #The codes excerpted from the textbook
     def __init__(self, beta, mu0, n, R):
         self.beta, self.mu0, self.n, self.R = beta, mu0, n, R
 
@@ -523,9 +523,13 @@ class VelocityProfile:
         (R**(1+1/n) - r**(1+1/n))
         return v
 
-class VelocityProfile2(VelocityProfile):
+for n in [0.1, 0.2, 1]:
+    v=VelocityProfile(0.06, 0.02, n, 2)
+    print(n, v.value(0))
+
+class VelocityProfile2(VelocityProfile):#the codes made by myself according to the requirement of the question 
     def __init__(self, beta, mu0, R):
-        VelocityProfile.__init__(self, beta=beta, mu0=mu0, n=None, R=R)
+        VelocityProfile.__init__(self, beta, mu0, None, R)
 
     def __call__(self, r, n):
         self.n=n
@@ -533,4 +537,63 @@ class VelocityProfile2(VelocityProfile):
 
 v = VelocityProfile2(beta=0.06, mu0=0.02, R=2)
 for n in [0.1, 0.2, 1]:
-    print(n, v(0, n))
+    print('%12g %12g'%(n, v(0, n)))'''
+
+'''
+Exercise 9.15. Change the user interface of a class hierarchy.
+All the classes in the Integrator hierarchy from Chapter 9.3 take the integration limits a and b plus the number
+of integration points n as input to the constructor. The integrate method takes the function to integrate, f(x), as 
+parameter. Another possibility is to feed f(x) to the constructor and let integrate take a, b, and n as parameters. 
+Make this change to the integrate.py file with the Integrator hierarchy.
+
+class Integrator: # the answer shown in the textbook
+    def __init__(self, a, b, n):
+        self.a, self.b, self.n = a, b, n
+        self.points, self.weights = self.construct_method()
+
+    def construct_method(self):
+        raise NotImplementedError('no rule in class %s' %
+        self.__class__.__name__)
+
+    def integrate(self, f):
+        s = 0
+        for i in range(len(self.weights)):
+            s += self.weights[i]*f(self.points[i])
+        return s
+
+class Midpoint(Integrator):
+    def construct_method(self):
+        a, b, n = self.a, self.b, self.n # quick forms
+        h = (b-a)/n
+        x = np.linspace(a + 0.5*h, b - 0.5*h, n)
+        w = np.zeros(len(x)) + h
+        return x, w
+#below is my answer to the question
+
+class New_integrator:
+    def __init__(self, f):
+        self.f=f
+        self.points, self.weights = self.construct_method()
+
+    def construct_method(self):
+        raise NotImplementedError('no rule in class %s' %
+                                      self.__class__.__name__)
+
+    def integrate(self, a, b, n):
+        start, end, num=a, b, n
+        for i in range(n):
+            s+=self.weights[i]*value[i]
+        return s
+
+class Trapezoidal(New_integrator):
+    def construct_method(self):
+        f=self.f   
+        step=(end-start)/(num-1)     
+        v = np.linspace(f(start), f(end), num)
+        w = np.zeros(n) + step
+        return w, v'''
+
+
+
+
+
