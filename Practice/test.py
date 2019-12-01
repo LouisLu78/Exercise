@@ -20,10 +20,10 @@ for tag in tags:
 		urls.append(tag['href'])
 for url in urls[-1:-12:-1]:
 	pdffile= os.path.join(pdffolder, '0%d_.pdf'%count)
-	Convertor().url_to_pdf(url)
-	shutil.move(os.path.join(pdffolder, 'tmp%d.pdf'%Convertor.counter), pdffile)
+	target=Convertor().url_to_pdf(url)
+	shutil.copy(target, pdffile)
 	count-=1
-	print('The No.%d file is done'%count)
+	print('The No.%d file is downloaded.'%count)
 f.close()
 
 
