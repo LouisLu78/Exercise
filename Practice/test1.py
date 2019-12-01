@@ -22,17 +22,7 @@ from matplotlib.animation import FuncAnimation
 # ani = FuncAnimation(fig, update, frames=np.linspace(0, 3, 100),
 #                     init_func=init, blit=True)
 # plt.show()
-#
-# t =np.linspace(0, 3, 51)
-# y1=t**2*np.exp(-t**2)
-# y2=t**2*y1
-# plt.plot(t, y1)
-# plt.plot(t, y2)
-# plt.xlabel('t')
-# plt.ylabel('y')
-# plt.title('Plotting two curves in the same plot')
-# plt.savefig('tmp3.png')
-# plt.show()
+
 
 fig, ax=plt.subplots()
 xdata, y1data, y2data=[], [], []
