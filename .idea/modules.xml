@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Exercise.iml" filepath="$PROJECT_DIR$/.idea/Exercise.iml" />
       <module fileurl="file://$USER_HOME$/Flask/.idea/Flask.iml" filepath="$USER_HOME$/Flask/.idea/Flask.iml" />
+      <module fileurl="file://D:/Program files/JetBrains/PyQt5/.idea/PyQt5.iml" filepath="D:/Program files/JetBrains/PyQt5/.idea/PyQt5.iml" />
       <module fileurl="file://$USER_HOME$/Tkinter/.idea/Tkinter.iml" filepath="$USER_HOME$/Tkinter/.idea/Tkinter.iml" />
       <module fileurl="file://$USER_HOME$/djangogirls/.idea/djangogirls.iml" filepath="$USER_HOME$/djangogirls/.idea/djangogirls.iml" />
       <module fileurl="file://D:/Program files/JetBrains/my_module/.idea/my_module.iml" filepath="D:/Program files/JetBrains/my_module/.idea/my_module.iml" />
