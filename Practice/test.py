@@ -58,8 +58,3 @@ from pdf_convertor_v2 import *
 #     count+=1
 #     print('File no.%d is done.'%count)
 
-html_file='D:\\Arbeiten\\myfiles\\favorites_2019_11_27.html'
-f=open(html_file,'rb')
-soup=bs4.BeautifulSoup(f.read(), 'html.parser')
-for child in soup.dt.next_elements:
-    print(child)
