@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 pd.set_option('display.max_rows',10) #this function doesn't work, why?
 
-df=pd.read_csv('GL_050202_01.csv',header=None,index_col=False,names=['Wavenumber','Intensity']) #this is the Raman spectrum of my sample
+df=pd.read_csv('GL_050202_01.csv', header=None, index_col=False, names=['Wavenumber', 'Intensity']) #this is the Raman spectrum of my sample
 print(df.head())
 print(df.describe())
 
@@ -32,10 +32,6 @@ plt.ylabel('Intensity(a.u.)')
 plt.title('Raman spectrum of Zinc Oxide')
 plt.plot(x,y)
 plt.show()
-
-import random
-import math
-from ex6 import segment
 
 # def randwalk(steps,times):
 #     '''

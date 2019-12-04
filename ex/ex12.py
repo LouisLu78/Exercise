@@ -163,6 +163,6 @@ browser.get('http://hotmail.com')'''
 import requests
 res=requests.get('https://mp.weixin.qq.com/s/SyC_LLQL8AU3i6wYNlOdNQ')
 res.raise_for_status()
-with open('pyquestions.html', 'wb') as f:
+with open('../pyquestions.html', 'wb') as f:
     for chunk in res.iter_content(100000):
         f.write(chunk)
