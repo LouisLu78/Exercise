@@ -6,29 +6,6 @@ import bs4, requests
 import re, os, shutil
 from pdf_convertor_v2 import *
 
-
-
-# html_file='D:\\Arbeiten\\myfiles\\favorites_2019_11_27.html'
-# pdffolder = "C:\\Users\\Basanwei\\Downloads\\pdf"
-# f=open(html_file,'rb')
-# regex=re.compile(r'https://mp\.(.*)')
-# urls=[]
-# count=71
-# soup=bs4.BeautifulSoup(f.read(), 'html.parser')
-# tags=soup.select('a')
-# for tag in tags:
-# 	if regex.search(tag['href']) is not None:
-# 		urls.append(tag['href'])
-# for url in urls[-1:-12:-1]:
-# 	pdffile= os.path.join(pdffolder, '0%d_.pdf'%count)
-# 	target=Convertor().url_to_pdf(url)
-# 	shutil.copy(target, pdffile)
-# 	count-=1
-# 	print('The No.%d file is downloaded.'%count)
-# 	os.unlink(target)
-# f.close()
-
-
 # from pdf_convertor import *
 # url = 'https://blog.csdn.net/slhlde/article/details/81937838'
 # headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:70.0) Gecko/20100101 Firefox/70.0'}
@@ -58,3 +35,38 @@ from pdf_convertor_v2 import *
 #     count+=1
 #     print('File no.%d is done.'%count)
 
+html_file='D:\\Arbeiten\\myfiles\\favorites_2019_11_27.html'
+pdffolder = "C:\\Users\\Basanwei\\Downloads\\pdf"
+f=open(html_file,'r+', encoding='UTF-8')
+regex0=re.compile(r'Python100')
+regex1=re.compile(r'weixin')
+urls=[]
+
+soup=bs4.BeautifulSoup(f.read(),'html.parser')
+'''
+# old version is: tags=soup.select('a')
+for tag in tags:
+	if regex.search(tag['href']) is not None:
+		urls.append(tag['href'])
+'''
+tags=soup.find_all(['h3','a'])
+t=list(tags)
+f.close()
+for k,v in enumerate(t):
+
+    if regex0.search(str(v)):
+        position=k
+        print(position)
+        break
+for i in range(position+1,len(t)):
+    if regex1.search(str(t[i])):
+        urls.append(t[i]['href'])
+count=0
+print(len(urls))
+for url in urls:
+	pdffile= os.path.join(pdffolder, '0%d_.pdf'%count)
+	target=Convertor().url_to_pdf(url)
+	shutil.copy(target, pdffile)
+	count+=1
+	print('The No.%d file is downloaded.'%count)
+	os.unlink(target)
