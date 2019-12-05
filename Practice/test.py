@@ -52,10 +52,9 @@ for tag in tags:
 tags=soup.find_all(['h3','a'])
 t=list(tags)
 f.close()
-for k,v in enumerate(t):
-
+for i,v in enumerate(t):
     if regex0.search(str(v)):
-        position=k
+        position=i
         print(position)
         break
 for i in range(position+1,len(t)):
