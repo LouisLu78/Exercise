@@ -68,7 +68,7 @@ import datetime
 
 today=datetime.datetime.now()
 Today=today.strftime('%Y_%m_%d')
-newsfolder="C:\\Users\\Basanwei\\Downloads\\news"
+newsfolder="F:\\Gstorage\\news"
 if not os.path.exists(newsfolder):
     os.makedirs(newsfolder)
 
