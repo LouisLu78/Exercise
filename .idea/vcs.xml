@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="D:/Program files/JetBrains/my_module" vcs="Git" />
+    <mapping directory="D:/my_git" vcs="Git" />
   </component>
 </project>
