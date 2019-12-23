@@ -31,7 +31,7 @@ import requests
 
 res=requests.get('https://archive.ics.uci.edu/ml/machine-learning-databases/00236/seeds_dataset.txt')
 res.raise_for_status()
-with open('seeds_dataset.txt','wb') as f:
+with open('seeds_dataset.txt', 'wb') as f:
     for chunk in res.iter_content(100000):
         f.write(chunk)
 

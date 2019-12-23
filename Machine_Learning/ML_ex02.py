@@ -59,7 +59,7 @@ class StemmedCountVectorizer(CountVectorizer):
 vectorizer = StemmedCountVectorizer(min_df=1, stop_words = 'english')
 
 import os
-posts = [open(os.path.join('.\\DIR', f)).read() for f in os.listdir('.\\DIR')]
+posts = [open(os.path.join('DIR', f)).read() for f in os.listdir('DIR')]
 X_train = vectorizer.fit_transform(posts)
 num_samples, num_features = X_train.shape
 print("#samples: %d, #features: %d" % (num_samples, num_features))

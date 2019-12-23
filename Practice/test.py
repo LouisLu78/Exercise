@@ -2,9 +2,13 @@
 # author: Guangqiang Lu time:2019/11/29
 # If not explicitly pointed out, all the codes are written by myself.
 
+import sys
+sys.path.append(r'D:\Program files\JetBrains\my_module')
 import bs4, requests
 import re, os, shutil
 from pdf_convertor_v2 import *
+
+print(sys.path)
 
 # from pdf_convertor import *
 # url = 'https://blog.csdn.net/slhlde/article/details/81937838'
