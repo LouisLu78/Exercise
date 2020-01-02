@@ -54,6 +54,8 @@ for tag in tags:
 		urls.append(tag['href'])
 '''
 tags=soup.find_all(['h3','a'])
+for tag in tags:
+    print(tag.text)
 t=list(tags)
 f.close()
 for i,v in enumerate(t):
@@ -66,10 +68,10 @@ for i in range(position+1,len(t)):
         urls.append(t[i]['href'])
 count=0
 print(len(urls))
-for url in urls:
-	pdffile= os.path.join(pdffolder, '0%d_.pdf'%count)
-	target=Convertor().url_to_pdf(url)
-	shutil.copy(target, pdffile)
-	count+=1
-	print('The No.%d file is downloaded.'%count)
-	os.unlink(target)
+# for url in urls:
+# 	pdffile= os.path.join(pdffolder, '0%d_.pdf'%count)
+# 	target=Convertor().url_to_pdf(url)
+# 	shutil.copy(target, pdffile)
+# 	count+=1
+# 	print('The No.%d file is downloaded.'%count)
+# 	os.unlink(target)
