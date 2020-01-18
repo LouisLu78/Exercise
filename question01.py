@@ -427,7 +427,7 @@ Q44 两个 3 行 3 列的矩阵，实现其对应位置的数据相加，并返�
 # def migration(list, m):
 #     n=len(list)
 #     list_end=list[n-1]
-#     for i in range(n-1,-1,-1):
+#     for i in range(n-1,0,-1):
 #         list[i]=list[i-1]
 #     list[0]=list_end
 #     m-=1
