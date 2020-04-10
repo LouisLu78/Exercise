@@ -2,8 +2,10 @@
 # author: Guangqiang Lu time:2019/12/4
 # all the codes below are written by myself.
 
+import numpy as np
+
 def angle(x, y):
-    import numpy as np
+
     if len(x) != len(y):
         raise Exception('The two vectors have unequal numbers of dimensions!' )
 
