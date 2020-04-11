@@ -11,24 +11,25 @@ def getNumber():
 class Hare:
     def __init__(self, pos = 1):
         self.pos = pos
-        self.race()
 
     def sleep(self):
-        self.pos += 0
+        pass
 
     def bigleap(self):
         self.pos +=9
 
     def severeSlip(self):
         self.pos -= 12
-        self.pos = 1 if self.pos < 1 else self.pos
+        if self.pos < 1:
+            self.pos = 1
 
     def smallJump(self):
         self.pos += 1
 
     def slightSlip(self):
         self.pos -= 2
-        self.pos = 1 if self.pos < 1 else self.pos
+        if self.pos < 1:
+            self.pos = 1
 
     def race(self):
         n = getNumber()
@@ -39,7 +40,7 @@ class Hare:
             self.bigleap()
         elif n == 5:
             self.severeSlip()
-        elif n == 6 or n == 7 or n == 8:
+        elif n <= 8:
             self.smallJump()
         else:
             self.slightSlip()
@@ -47,14 +48,14 @@ class Hare:
 class Tortoise:
     def __init__(self, pos = 1):
         self.pos = pos
-        self.race()
 
     def fastCrawl(self):
         self.pos += 3
 
     def slip(self):
         self.pos -= 6
-        self.pos = 1 if self.pos < 1 else self.pos
+        if self.pos < 1:
+            self.pos = 1
 
     def slowCrawl(self):
         self.pos += 1
@@ -73,21 +74,24 @@ def main():
     SIZE = 70
     rabbit = Hare()
     turtle = Tortoise()
-    position = [" "] * SIZE
-    #print(position)
-    while rabbit.pos < SIZE and turtle.pos <SIZE:
+
+    while rabbit.pos < SIZE and turtle.pos < SIZE:
         rabbit.race()
         turtle.race()
+        pos = max(SIZE, rabbit.pos, turtle.pos) + 1
+        position = [" "] * pos
 
         if rabbit.pos != turtle.pos:
             position[rabbit.pos] = "H"
             position[turtle.pos] = "T"
         else:
             position[rabbit.pos] = "OUCH!!"
-        print(position)
+
+        for c in position:
+            print(c, end = "")
+        print()
 
         time.sleep(0.2)
-        position = [" "] * SIZE
 
     print("Congratulations! ")
     if rabbit.pos > turtle.pos:
@@ -101,4 +105,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    #to be further improved later
+# This program is a translation of its c++ version which you may find in another folder.
