@@ -5,18 +5,20 @@
 
 import random, time
 
+
 def getNumber():
     return random.randint(1, 10)
 
+
 class Hare:
-    def __init__(self, pos = 1):
+    def __init__(self, pos=1):
         self.pos = pos
 
     def sleep(self):
         pass
 
     def bigleap(self):
-        self.pos +=9
+        self.pos += 9
 
     def severeSlip(self):
         self.pos -= 12
@@ -34,7 +36,7 @@ class Hare:
     def race(self):
         n = getNumber()
 
-        if n == 1 or n ==2:
+        if n == 1 or n == 2:
             self.sleep()
         elif n == 3 or n == 4:
             self.bigleap()
@@ -45,8 +47,9 @@ class Hare:
         else:
             self.slightSlip()
 
+
 class Tortoise:
-    def __init__(self, pos = 1):
+    def __init__(self, pos=1):
         self.pos = pos
 
     def fastCrawl(self):
@@ -70,6 +73,7 @@ class Tortoise:
         else:
             self.slowCrawl()
 
+
 def main():
     SIZE = 70
     rabbit = Hare()
@@ -88,7 +92,7 @@ def main():
             position[rabbit.pos] = "OUCH!!"
 
         for c in position:
-            print(c, end = "")
+            print(c, end="")
         print()
 
         time.sleep(0.2)
@@ -102,6 +106,7 @@ def main():
 
     else:
         print("They both reached the endpoint at the same time!")
+
 
 if __name__ == "__main__":
     main()
